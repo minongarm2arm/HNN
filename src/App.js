@@ -1,8 +1,14 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
+import Router from "./shared/Router";
+import Layout from "./components/Layout";
+
 
 function App() {
-  return <Router/>
+  return (
+    <Layout>
+      <Router/>
+    </Layout>
+  )
 }
 
 export default App;

@@ -21,7 +21,7 @@ const Detail = () => {
             </StInfoLeft>
             <StInfoRight>
               <p>userName</p>
-              <p><span>♥ 59</span><span>■25</span></p>
+              <p><span>❤️ 59</span><span>■25</span></p>
             </StInfoRight>
           </StImageInfo>
           <StImageDesc>

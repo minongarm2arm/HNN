@@ -1,32 +1,36 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {addComment} from "../../redux/modules/comment";
-import uuid from "uuid";
+import {addList} from "../../redux/modules/comment";
+import {useParams} from "react-router-dom";
 import {nanoid} from "nanoid";
 
 const Pagnation = () => {
   const dispatch = useDispatch()
+  const {id} = useParams()
+  const commentInput = useRef()
   const [commentText, setCommentText] = useState()
 
-  const onAddComment = () => {
-    dispatch(
-      addComment({
-        commentText,
-        id: nanoid(),
-        date: new Date().toLocaleString(),
-        likes: 0,
-      })
-    )
+  const onAddList = () => {
+    const newList = {
+      postId:parseInt(id),
+      name:"닉네임",
+      date: new Date().toLocaleString(),
+      likes: 0,
+      commentText,
+      id:nanoid()
+    }
+    dispatch(addList(newList))
+    commentInput.current.value=""
   }
 
   return (
     <StPagnationWrapper>
       <StCommentInput>
-        <input onChange={(e)=> {
+        <input ref={commentInput} onChange={(e) => {
           setCommentText(e.target.value)
         }} placeholder={"댓글 달기..."} type="text"/>
-        <button onClick={onAddComment}>게시</button>
+        <button onClick={onAddList}>게시</button>
       </StCommentInput>
       <StPagNation>
         <button> {"<"} </button>
@@ -34,22 +38,12 @@ const Pagnation = () => {
           <li>
             <button>1</button>
           </li>
-          <li>
-            <button>2</button>
-          </li>
-          <li>
-            <button>3</button>
-          </li>
-          <li>
-            <button>4</button>
-          </li>
         </StPageNumBox>
         <button> ></button>
       </StPagNation>
     </StPagnationWrapper>
   )
 }
-
 
 
 const StPagnationWrapper = styled.div``
@@ -68,10 +62,11 @@ const StCommentInput = styled.div`
     font-size: 16px;
     padding-right: 20px;
     padding-left: 10px;
+
     &:focus {
       outline: none;
     }
-    
+
     &:focus ~ button {
       opacity: 1;
     }
@@ -99,6 +94,7 @@ const StPagNation = styled.div`
     padding: 10px;
     margin: 0 5px;
     cursor: pointer;
+
     &:hover {
       color: #0000ff;
     }
@@ -109,7 +105,7 @@ const StPageNumBox = styled.ol`
   display: flex;
   list-style: none;
   justify-content: space-between;
-  
+
   & > li {
     & button {
       cursor: pointer;
@@ -117,6 +113,7 @@ const StPageNumBox = styled.ol`
       background-color: transparent;
       padding: 10px;
       margin: 0 5px;
+
       &:hover {
         color: #0000ff;
       }

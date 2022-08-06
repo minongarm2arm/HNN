@@ -2,18 +2,11 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "food": "떡볶이",
+      "restaurant": "웃긴 떡볶이",
+      "location": "서대문",
+      "review": "둘이 먹다 하나가 죽으면 알아차릴 맛입니다.",
+      "comment": null
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

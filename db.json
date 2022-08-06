@@ -1,19 +1,18 @@
 {
-  "posts": [
+  "list": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "commentText": "맛있어보여요",
+      "name": "개똥이",
+      "date": "2022-08-06 4시 26분",
+      "likes": 0,
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "commentText": "이런걸 왜먹음?",
+      "name": "철수",
+      "date": "2022-08-06 6시 99분",
+      "likes": 0,
+      "id": 2
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

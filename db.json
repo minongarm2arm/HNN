@@ -5,8 +5,80 @@
       "food": "떡볶이",
       "restaurant": "웃긴 떡볶이",
       "location": "서대문",
-      "review": "둘이 먹다 하나가 죽으면 알아차릴 맛입니다.",
-      "comment": null
+      "review": "둘이 먹다 하나가 죽으면 알아차릴 맛입니다."
+    },
+    {
+      "id": 2,
+      "food": "순대",
+      "restaurant": "못생긴 순대",
+      "location": "동대문",
+      "review": "너무 맛없어요 환불해주셈"
+    }
+  ],
+  "comment": [
+    {
+      "postId": 1,
+      "commentText": "asdfasdf",
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 3:32:20",
+      "likes": 0,
+      "id": "Q30L51bhc4UadZon55uHc"
+    },
+    {
+      "postId": 1,
+      "commentText": "fasdfsdfsd",
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 3:32:35",
+      "likes": 0,
+      "id": "3bgPf3SESEZlMpiXXoNwk"
+    },
+    {
+      "postId": 2,
+      "commentText": "asdvasdaeq",
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 3:32:48",
+      "likes": 0,
+      "id": "-IRLg1d_e8rIQcLB-rf7a"
+    },
+    {
+      "postId": 1,
+      "commentText": "asdsadsa",
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 4:23:03",
+      "likes": 0,
+      "id": "RwdkSiCq50xAwyTiT6b6n"
+    },
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 5:04:21",
+      "likes": 0,
+      "commentText": "adfasfadf",
+      "id": "o9MBG81"
+    },
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 5:05:36",
+      "likes": 0,
+      "commentText": "asdasdsada",
+      "id": "dRJU4e46z07Tjb-UJh0mQ"
+    },
+    {
+      "postId": 2,
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 5:13:54",
+      "likes": 0,
+      "commentText": "ㅁㄴㅇㄻㄴㄹㄴㅁㄹ",
+      "id": "nbHRK2tXfngBHqt8ssOOc"
+    },
+    {
+      "postId": 2,
+      "name": "닉네임",
+      "date": "2022. 8. 7. 오전 5:14:43",
+      "likes": 0,
+      "commentText": "ㅁㄴㅇㄹㅇㅁㄻㄹ",
+      "id": "QcbC4xLj7ORxuc8EDaboi"
     }
   ]
 }

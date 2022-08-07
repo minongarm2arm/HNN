@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counter from "../modules/counterSlice";
+import {configureStore} from "@reduxjs/toolkit";
+import comment from "../modules/comment";
 
 const store = configureStore({
   reducer: {
-    counter,
+    comment,
   },
 });
 

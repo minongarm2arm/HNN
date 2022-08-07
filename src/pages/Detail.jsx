@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import CommonHeader from "../components/CommonHeader";
 import placeholder from '../src_assets/placeholder.png'
+import Comment from "../components/detail/Comment";
+import Pagnation from "../components/detail/Pagenation";
 
 const Detail = () => {
   return (
@@ -10,7 +12,6 @@ const Detail = () => {
       <StDetail>
         <StLeftContainer>
           <StImageBox>
-            {/*<StImageBoxImg src={placeholder} alt="image"/>*/}
           </StImageBox>
           <StImageInfo>
             <StInfoLeft>
@@ -20,7 +21,7 @@ const Detail = () => {
             </StInfoLeft>
             <StInfoRight>
               <p>userName</p>
-              <p><span>♥ 59</span><span>■25</span></p>
+              <p><span>❤️ 59</span><span>■25</span></p>
             </StInfoRight>
           </StImageInfo>
           <StImageDesc>
@@ -28,49 +29,8 @@ const Detail = () => {
           </StImageDesc>
         </StLeftContainer>
         <StRightContainer>
-          <StCommentList>
-            <StCommentItem>
-              <p><span>닉네임</span>: 코멘트</p>
-              <p className={"desc"}>3분전 <span>♥ 59</span></p>
-            </StCommentItem>
-            <StCommentItem>
-              <p><span>닉네임</span>: 코멘트</p>
-              <p className={"desc"}>3분전 <span>♥ 59</span></p>
-            </StCommentItem>
-            <StCommentItem>
-              <p><span>닉네임</span>: 코멘트</p>
-              <p className={"desc"}>3분전 <span>♥ 59</span></p>
-            </StCommentItem>
-            <StCommentItem>
-              <p><span>닉네임</span>: 코멘트</p>
-              <p className={"desc"}>3분전 <span>♥ 59</span></p>
-            </StCommentItem> <StCommentItem>
-            <p><span>닉네임</span>: 코멘트</p>
-            <p className={"desc"}>3분전 <span>♥ 59</span></p>
-          </StCommentItem>
-            <StCommentItem>
-              <p><span>닉네임</span>: 코멘트</p>
-              <p className={"desc"}>3분전 <span>♥ 59</span></p>
-            </StCommentItem>
-          </StCommentList>
-          <StPageNation>
-            <button> {"<"} </button>
-            <StPageNumBox>
-              <li>
-                <button>1</button>
-              </li>
-              <li>
-                <button>2</button>
-              </li>
-              <li>
-                <button>3</button>
-              </li>
-              <li>
-                <button>4</button>
-              </li>
-            </StPageNumBox>
-            <button> ></button>
-          </StPageNation>
+          <Comment />
+          <Pagnation />
         </StRightContainer>
       </StDetail>
     </>
@@ -101,7 +61,6 @@ const StImageBox = styled.div`
 const StImageInfo = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `
 
 const StInfoLeft = styled.div``
@@ -116,30 +75,6 @@ const StRightContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
-const StCommentList = styled.ul`
-  list-style: none;
-`
 
-const StCommentItem = styled.li`
-  width: 100%;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 5px;
-  & .desc {
-    display: flex;
-    justify-content: space-between;
-  }
-`
-
-const StPageNation = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const StPageNumBox = styled.ol`
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-`
 export default Detail
 

@@ -7,24 +7,23 @@ import axios from "axios";
 //assets
 import placeholder from '../../src_assets/placeholder.png'
 
+//components
+
 
 const PostBox = () => {
-  //input value
-  const [food, setFood] = useState('');
-  const [restaurant, setRestaurant] = useState('');
-  const [location, setLocation] = useState('');
-  const [review, setReview] = useState('');
-  const [star, setStar] = useState('');
 
+  //post 페이지 input value를 받아서 묶어줍니다?
   const [post, setPost] = useState({
     id: '',
+    image: '',
     food: '',
     restaurant: '',
     location: '',
     review: '',
-    comment: null,
   })
 
+  const [imageSrc, setImageSrc] = useState('');
+  
   const [posts, setPosts] = useState(null);
 
   const fetchPosts = async () => {
@@ -40,7 +39,16 @@ const PostBox = () => {
     fetchPosts();
   }, []);
 
-  console.log(post)
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileBlob);
+    return new Promise((resolve)=>{
+      reader.onload=()=> {
+        setImageSrc(reader.result);
+        resolve();
+      };
+    });
+  };
 
   return (
     <>
@@ -50,7 +58,32 @@ const PostBox = () => {
             onSubmitHandler(post);
           }}
         >
-          <StPostImg src={placeholder} alt='사진 업로드'/>
+          <StPostImg>
+            { 
+              {placeholder} && 
+              <img
+                src={imageSrc}
+                alt='이미지 업로드'
+              />
+            }
+          </StPostImg>
+          <StPostInput
+            id="image"
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={(e) => {
+              encodeFileToBase64(e.target.files[0])
+              const {value} = encodeFileToBase64(e.target.files[0]);
+              // console.log(value)
+              setPost({
+                ...post,
+                image: value,
+              });
+            }}
+          />
+          <StHelpText>
+            ※ jpeg, png 파일만 가능합니다.
+          </StHelpText>
           <StPostInput 
             id="food"
             placeholder="음식 이름"
@@ -90,9 +123,8 @@ const PostBox = () => {
               });
             }}
           />
-          <textarea
+          <StTextarea
             id="review"
-            cols={43} rows={4}
             placeholder='후기'
             onChange={(e) => {
               const {value} = e.target;
@@ -103,7 +135,7 @@ const PostBox = () => {
               });
             }}
           />
-          <button>저장</button>
+          <StPostBtn>저장</StPostBtn>
         </StPostForm>
       </StPostBox>
     </>
@@ -120,15 +152,31 @@ align-items: center;
 margin: 50px auto;
 `
 
-const StPostImg = styled.img`
+const StPostImg = styled.div`
 width: 300px;
+height: 300px;
 margin: 10px;
+background-image: url('../../src_assets/placeholder.png');
+`
+const StHelpText = styled.p`
+font-size: 13px;
+font-weight: lighter;
+color: #5c5c5c;
+align-self: flex-start;
+margin: -10px 0px 10px 15px;
 `
 
 const StPostInput = styled.input`
 width: 300px;
 height: 30px;
 margin: 5px;
+padding-left: 5px;
+`
+
+const StTextarea = styled.textarea`
+width: 300px;
+height: 150px;
+padding: 5px;
 `
 
 const StPostForm = styled.form`
@@ -137,6 +185,11 @@ flex-direction: column;
 align-items: center;
 `
 
+const StPostBtn = styled.button`
+width: 300px;
+height: 40px;
+margin: 10px;
+`
 
 
 
@@ -145,7 +198,8 @@ align-items: center;
 
 
 
-// 디벨롭
+
+// 나중에 별점 추가하면 사용하기
 {/* <select 
             id="star"
             style={{width:'300px', margin:'5px'}}

@@ -13,6 +13,51 @@
       "restaurant": "못생긴 순대",
       "location": "동대문",
       "review": "너무 맛없어요 환불해주셈"
+    },
+    {
+      "id": 3,
+      "food": "zz",
+      "restaurant": "zz",
+      "location": "zz",
+      "review": "zz"
+    },
+    {
+      "id": 4,
+      "food": "테스트",
+      "restaurant": "테스트",
+      "location": "테스트",
+      "review": "테스트"
+    },
+    {
+      "id": 5,
+      "food": "",
+      "restaurant": "",
+      "location": "",
+      "review": ""
+    },
+    {
+      "id": 6,
+      "image": "C:\\fakepath\\logo700.png",
+      "food": "ㄴㄴ",
+      "restaurant": "ㄴㄴ",
+      "location": "ㄴㄴ",
+      "review": "ㄴㄴ"
+    },
+    {
+      "id": 7,
+      "image": "C:\\fakepath\\logo700.png",
+      "food": "xx",
+      "restaurant": "xx",
+      "location": "xx",
+      "review": "xx"
+    },
+    {
+      "id": 8,
+      "image": "C:\\fakepath\\logo700.png",
+      "food": "사진 저장",
+      "restaurant": "사진 저장",
+      "location": "사진 저장",
+      "review": "사진 저장"
     }
   ],
   "comment": [

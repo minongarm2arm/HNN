@@ -30,6 +30,8 @@ const Comment = () => {
 
 const StCommentList = styled.ul`
   list-style: none;
+  flex: 1;
+  overflow: auto;
 `
 
 const StCommentItem = styled.li`

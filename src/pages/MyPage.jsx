@@ -79,15 +79,30 @@ const MainBoxContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+// const MainBoxLayout = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   margin-top: 50px;
+
+//   & > p {
+//     flex: 1 1 100%;
+//     margin-top: 7px;
+//   }
+// `;
+
 const MainBoxLayout = styled.div`
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
   margin-top: 50px;
+  width: 33%;
 
   & > p {
-    flex: 1 1 100%;
+    /* flex: 1 1 100%; */
     margin-top: 7px;
+    width: 180px;
   }
 `;
 

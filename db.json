@@ -15,6 +15,49 @@
       "restaurant": "항해99",
       "location": "게더",
       "review": "죽을 맛입니다."
+    },
+    {
+      "id": 3,
+      "image": "",
+      "food": "ㅇㅇㅇㅇㅇ",
+      "restaurant": "ㅇㅇ",
+      "location": "ㅇㅇ",
+      "review": "ㅇㅇ"
+    }
+  ],
+  "comment": [
+    {},
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오전 1:25:29",
+      "likes": 0,
+      "commentText": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "id": "ndYzO9N7nfWSRvLF2JBNg"
+    },
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오전 1:25:48",
+      "likes": 0,
+      "commentText": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "id": "kZbBTVGLJdn6q9zoh3ahv"
+    },
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오전 1:26:01",
+      "likes": 0,
+      "commentText": "zzz",
+      "id": "egUnqmxzPLGsvxI6AtpeH"
+    },
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오전 1:30:44",
+      "likes": 0,
+      "commentText": "sss",
+      "id": "RHM71uH57ysi3BONcRge3"
     }
   ]
 }

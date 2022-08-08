@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import styled from "styled-components";
 import placeholder from "../../src_assets/placeholder.png";
 import {useParams} from "react-router-dom";
@@ -10,10 +10,21 @@ const DetailInfo = () => {
 
   const {id} = useParams()
   const dispatch = useDispatch()
+  const [commentLength,setCommentLength] = useState(0)
+
   const postData = useSelector((state => state.detail))
   useEffect(()=> {
     dispatch(getPost(id))
   },[])
+
+
+  const comment = useSelector((state)=> state.comment)
+  useEffect(()=> {
+      comment.length && setCommentLength(comment.length)
+  })
+
+
+
 
   return (
     <>
@@ -31,7 +42,7 @@ const DetailInfo = () => {
         </StInfoLeft>
         <StInfoRight>
           <p>userName</p>
-          <p><span>❤️ 59</span><span>■25</span></p>
+          <p><span>❤️ 59</span><span>■{commentLength}</span></p>
         </StInfoRight>
       </StImageInfo>
       {postData.map((data)=> (

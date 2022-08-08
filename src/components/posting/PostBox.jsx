@@ -12,7 +12,7 @@ import { getPosts } from "../../redux/modules/postSlice";
 const PostBox = () => {
   const postEdit = useSelector((state)=> state.posts)
 
-  console.log(postEdit)
+  // console.log(postEdit)
 
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -90,7 +90,7 @@ const PostBox = () => {
                 ...post,
                 image: value,
               });
-              console.log(e.target.files[0])
+              // console.log(e.target.files[0])
               // ~~~리사이즈~~~
               encodeFileToBase64(e.target.files[0])
             }}
@@ -205,32 +205,3 @@ width: 300px;
 height: 40px;
 margin: 10px;
 `
-
-
-
-
-
-
-
-
-
-// 나중에 별점 추가하면 사용하기
-{/* <select 
-            id="star"
-            style={{width:'300px', margin:'5px'}}
-            onChange={(e) => {
-              const {value} = e.target;
-              // console.log(value)
-              setPost({
-                ...post,
-                star: value,
-              });
-            }}
-          >
-  <option disabled selected> --별점후기-- </option>
-  <option> ⭐ </option>
-  <option> ⭐⭐ </option>
-  <option> ⭐⭐⭐ </option>
-  <option> ⭐⭐⭐⭐ </option>
-  <option> ⭐⭐⭐⭐⭐ </option>
-</select> */}

@@ -21,12 +21,26 @@ export const getPosts = createAsyncThunk(
   }
 );
 
+export const patchPosts = createAsyncThunk(
+  "patchPosts",
+  async (id) => {
+    try {
+      const data = await axios.patch(`http://localhost:3001/posts?id=${id}`);
+      console.log(data.data[0]);
+      return data.data[0]
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
   extraReducers: {
     [getPosts.fulfilled]: (state, {payload}) => payload,
+    [patchPosts.fulfilled]: (state, {payload}) => payload,
     
 
   }

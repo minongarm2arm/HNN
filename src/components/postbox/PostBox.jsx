@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
-
-//package
 import styled from "styled-components";
 import axios from "axios";
-
-//assets
+import imageCompression from "browser-image-compression";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import placeholder from '../../src_assets/placeholder.png'
-
-//components
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { getPosts } from "../../redux/modules/postSlice";
 
 
 const PostBox = () => {
+  const postEdit = useSelector((state)=> state.posts)
 
-  //post 페이지 input value를 받아서 묶어줍니다?
+  console.log(postEdit)
+
+  const {id} = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(getPosts(id))
+  },[])
+
   const [post, setPost] = useState({
     id: '',
     image: '',
@@ -27,29 +35,34 @@ const PostBox = () => {
   const [posts, setPosts] = useState(null);
 
   const fetchPosts = async () => {
-    const { data } = await axios.get("http://localhost:3001/posts");
+    const { data } = await axios.get("http://localhost:3001/posts?id={id}");
     setPosts(data);
   };
+ 
 
   const onSubmitHandler = (post) => {
     axios.post("http://localhost:3001/posts", post);
   };
 
+
   useEffect(() => {
     fetchPosts();
   }, []);
 
-  const encodeFileToBase64 = (fileBlob) => {
+  const encodeFileToBase64 = async (fileBlob) => {
+    
     const reader = new FileReader();
     reader.readAsDataURL(fileBlob);
+    
     return new Promise((resolve)=>{
       reader.onload=()=> {
+        // console.log(reader.result)
         setImageSrc(reader.result);
         resolve();
       };
     });
   };
-
+  
   return (
     <>
       <StPostBox>
@@ -60,10 +73,10 @@ const PostBox = () => {
         >
           <StPostImg>
             { 
-              {placeholder} && 
+              // {placeholder} && 
               <img
                 src={imageSrc}
-                alt='이미지 업로드'
+                alt=''
               />
             }
           </StPostImg>
@@ -72,13 +85,14 @@ const PostBox = () => {
             type="file"
             accept="image/png, image/jpeg"
             onChange={(e) => {
-              encodeFileToBase64(e.target.files[0])
-              const {value} = encodeFileToBase64(e.target.files[0]);
-              // console.log(value)
+              const {value} = e.target;
               setPost({
                 ...post,
                 image: value,
               });
+              console.log(e.target.files[0])
+              // ~~~리사이즈~~~
+              encodeFileToBase64(e.target.files[0])
             }}
           />
           <StHelpText>
@@ -156,7 +170,8 @@ const StPostImg = styled.div`
 width: 300px;
 height: 300px;
 margin: 10px;
-background-image: url('../../src_assets/placeholder.png');
+background-image: url(${placeholder});
+background-size: cover;
 `
 const StHelpText = styled.p`
 font-size: 13px;

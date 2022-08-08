@@ -1,27 +1,31 @@
 import styled from "styled-components";
 import React, {useRef, useState} from "react";
-import {useDispatch} from "react-redux";
-import {addList} from "../../redux/modules/comment";
+import {useDispatch, useSelector} from "react-redux";
+import {addCommentList, getCommentList} from "../../redux/modules/comment";
 import {useParams} from "react-router-dom";
 import {nanoid} from "nanoid";
+import {useEffect} from "react";
 
 const Pagnation = () => {
   const dispatch = useDispatch()
   const {id} = useParams()
   const commentInput = useRef()
   const [commentText, setCommentText] = useState()
+  useEffect(() => {
+    dispatch(getCommentList(id))
+  }, [])
 
   const onAddList = () => {
-    const newList = {
-      postId:parseInt(id),
-      name:"닉네임",
+    const newCommentList = {
+      postId: parseInt(id),
+      name: "닉네임",
       date: new Date().toLocaleString(),
       likes: 0,
       commentText,
-      id:nanoid()
+      id: nanoid()
     }
-    dispatch(addList(newList))
-    commentInput.current.value=""
+    dispatch(addCommentList(newCommentList))
+    commentInput.current.value = ""
   }
 
   return (

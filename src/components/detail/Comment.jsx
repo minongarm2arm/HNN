@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import {addLikes, getList} from "../../redux/modules/comment";
-import axios from "axios";
+import {getCommentList} from "../../redux/modules/comment";
 import {useParams} from "react-router-dom";
 
 const Comment = () => {
@@ -11,7 +10,7 @@ const Comment = () => {
   const commentList = useSelector((state)=> state.comment)
 
   useEffect(()=> {
-    dispatch(getList(id))
+    dispatch(getCommentList(id))
   },[])
 
   return (
@@ -31,6 +30,8 @@ const Comment = () => {
 
 const StCommentList = styled.ul`
   list-style: none;
+  flex: 1;
+  overflow: auto;
 `
 
 const StCommentItem = styled.li`

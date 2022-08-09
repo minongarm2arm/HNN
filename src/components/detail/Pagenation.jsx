@@ -15,14 +15,15 @@ const Pagnation = () => {
     dispatch(getCommentList(id))
   }, [])
 
-  const onAddList = () => {
+  const onAddList = (e) => {
+    e.preventDefault()
     const newCommentList = {
       postId: parseInt(id),
       name: "닉네임",
       date: new Date().toLocaleString(),
-      likes: 0,
       commentText,
-      id: nanoid()
+      id: nanoid(),
+      isEdit:false,
     }
     dispatch(addCommentList(newCommentList))
     commentInput.current.value = ""
@@ -30,12 +31,12 @@ const Pagnation = () => {
 
   return (
     <StPagnationWrapper>
-      <StCommentInput>
+      <StCommentForm>
         <input ref={commentInput} onChange={(e) => {
           setCommentText(e.target.value)
         }} placeholder={"댓글 달기..."} type="text"/>
         <button onClick={onAddList}>게시</button>
-      </StCommentInput>
+      </StCommentForm>
       <StPagNation>
         <button> {"<"} </button>
         <StPageNumBox>
@@ -52,7 +53,7 @@ const Pagnation = () => {
 
 const StPagnationWrapper = styled.div``
 
-const StCommentInput = styled.div`
+const StCommentForm = styled.form`
   border-top: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
   display: flex;

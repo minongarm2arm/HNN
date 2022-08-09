@@ -59,5 +59,35 @@
       "commentText": "sss",
       "id": "RHM71uH57ysi3BONcRge3"
     }
+  ],
+  "comment": [
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오전 4:30:14",
+      "commentText": "test1",
+      "id": "JWTXl7EbSfZIb6ayfxJ6P"
+    },
+    {
+      "postId": "1",
+      "id": "1m2UaGJbC8VKb8WTyV4T9",
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오후 5:21:00",
+      "commentText": "gsfdgr3t234"
+    },
+    {
+      "postId": "1",
+      "id": "0jSFuwTOZjzMXW6J1iGuE",
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오후 6:04:30",
+      "commentText": "sdafasfadsfdasfasf"
+    },
+    {
+      "postId": 1,
+      "id": "ZMtqeLO1NsoW6hHjMFR2n",
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오후 6:15:36",
+      "commentText": "sdafdasfdasfadsf"
+    }
   ]
 }

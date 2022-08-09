@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPost} from "../../redux/modules/detail";
+import {FaRegCommentAlt} from "react-icons/fa";
 
 const DetailInfo = () => {
 
@@ -42,7 +43,7 @@ const DetailInfo = () => {
         </StInfoLeft>
         <StInfoRight>
           <p>userName</p>
-          <p><span>❤️ 59</span><span>■{commentLength}</span></p>
+          <p className={"commentLength"}><FaRegCommentAlt/>{commentLength}</p>
         </StInfoRight>
       </StImageInfo>
       {postData.map((data)=> (
@@ -85,6 +86,16 @@ const StInfoRight = styled.div`
   
   & p {
     padding: 3px 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    & svg {
+      margin-right: 5px;
+    }
+  }
+  
+  & .commentLength {
+    text-align: right;
   }
 `
 const StImageDesc = styled.div`

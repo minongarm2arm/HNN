@@ -2,9 +2,11 @@ import React from "react";
 
 const Login = () => {
   return (
-    <h2>
-      로그인
-    </h2>
+    <div>
+      <input type="text"/>
+      <input type="text"/>
+      <button>로그인</button>
+    </div>
   )
 }
 

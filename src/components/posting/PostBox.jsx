@@ -46,11 +46,11 @@ const PostBox = () => {
     }
   };
 
-  const imageHandler = async (e) => {
-    // 이벤트에 있는 이미지들을 압축하고 base64로 변환해서 변수에 담는다.
-      const newImages = await Promise.all([...e.target.files].map(async (file) => 
-        imageCompression.getDataUrlFromFile(await imageCompression(file, compressOptions))));
-  }
+  // const imageHandler = async (e) => {
+  //   // 이벤트에 있는 이미지들을 압축하고 base64로 변환해서 변수에 담는다.
+  //     const newImages = await Promise.all([...e.target.files].map(async (file) => 
+  //       imageCompression.getDataUrlFromFile(await imageCompression(file, compressOptions))));
+  // }
 
   // 이미지 인코딩해서 미리보기 띄우고 저장
   const encodeFileToBase64 = async (fileBlob) => {

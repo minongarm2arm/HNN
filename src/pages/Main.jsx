@@ -76,7 +76,7 @@ const MainBoxLayout = styled.div`
   & > p {
     /* flex: 1 1 100%; */
     margin-top: 7px;
-    /* width: 180px; */
+    width: 180px;
   }
 `;
 

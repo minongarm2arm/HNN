@@ -10,58 +10,65 @@ import { getPosts } from "../../redux/modules/postSlice";
 
 
 const PostBox = () => {
-  const postEdit = useSelector((state)=> state.posts)
-
-  // console.log(postEdit)
-
-  const {id} = useParams();
   const dispatch = useDispatch();
 
+  // id ~~???
+  const {id} = useParams();
+ 
   useEffect(()=> {
     dispatch(getPosts(id))
   },[])
 
-  const [post, setPost] = useState({
-    id: '',
-    image: '',
-    food: '',
-    restaurant: '',
-    location: '',
-    review: '',
-  })
-
-  const [imageSrc, setImageSrc] = useState('');
-  
-  const [posts, setPosts] = useState(null);
-
-  const fetchPosts = async () => {
-    const { data } = await axios.get("http://localhost:3001/posts?id={id}");
-    setPosts(data);
-  };
- 
+  //json-server에 post로 input 저장
+  const [post, setPost] = useState()
 
   const onSubmitHandler = (post) => {
     axios.post("http://localhost:3001/posts", post);
   };
 
+  // 업로드한 이미지 미리보기 파일
+  const [imageSrc, setImageSrc] = useState('');
+  
+  // 이미지 압축하기 
+  const imgCompress = async (fileBlob) => {
+    console.log('압축시작')
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+    const options = {
+      maxSizeMB: 0.02,
+      maxWidthOrHeight: 300,
+      useWebWorker: true,
+    };
+    try {
+      const compressedFile = await imageCompression(fileBlob, options)
+    }
+    catch (error) {
+      console.log(error);
+    }
+  };
 
+  // const imageHandler = async (e) => {
+  //   // 이벤트에 있는 이미지들을 압축하고 base64로 변환해서 변수에 담는다.
+  //     const newImages = await Promise.all([...e.target.files].map(async (file) => 
+  //       imageCompression.getDataUrlFromFile(await imageCompression(file, compressOptions))));
+  // }
+
+  // 이미지 인코딩해서 미리보기 띄우고 저장
   const encodeFileToBase64 = async (fileBlob) => {
-    
     const reader = new FileReader();
     reader.readAsDataURL(fileBlob);
-    
     return new Promise((resolve)=>{
       reader.onload=()=> {
-        // console.log(reader.result)
         setImageSrc(reader.result);
+        setPost({
+          ...post,
+          imgFile: reader.result,
+        })
         resolve();
       };
     });
   };
+
+
   
   return (
     <>
@@ -72,27 +79,18 @@ const PostBox = () => {
           }}
         >
           <StPostImg>
-            { 
-              // {placeholder} && 
-              <img
-                src={imageSrc}
-                alt=''
-              />
-            }
+              <img src={imageSrc} alt=''/>
           </StPostImg>
           <StPostInput
             id="image"
             type="file"
             accept="image/png, image/jpeg"
             onChange={(e) => {
-              const {value} = e.target;
+              const {value} = encodeFileToBase64(e.target.files[0]);
               setPost({
                 ...post,
-                image: value,
+                imgFile: value,
               });
-              // console.log(e.target.files[0])
-              // ~~~리사이즈~~~
-              encodeFileToBase64(e.target.files[0])
             }}
           />
           <StHelpText>

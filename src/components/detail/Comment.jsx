@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import {getCommentList, removeCommentList, updateCommentList} from "../../redux/modules/comment";
 import {useParams} from "react-router-dom";
-import CommentItem from "../../redux/modules/CommentItem";
+import CommentItem from "./CommentItem";
 
 const Comment = () => {
   const {id} = useParams()

@@ -1,5 +1,5 @@
 import React from "react";
-import {removeCommentList, updateCommentList} from "./comment";
+import {removeCommentList, updateCommentList} from "../../redux/modules/comment";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useRef, useState} from "react";
@@ -7,17 +7,15 @@ import styled from "styled-components";
 
 const CommentItem = ({postId, id, name, date, commentText}) => {
   const dispatch = useDispatch()
-  const commentList = useSelector((state) => state.comment)
   const toggleIsEdit = () => setIsEdit(!isEdit)
   const [isEdit, setIsEdit] = useState(false)
   const [commentTexts, setCommentTexts] = useState('')
   const commentTextInput = useRef()
-  console.log(commentList)
 
-  const onRemoveHandler = (a) => {
+  const onRemoveHandler = () => {
     const ids = {
-      postId: id,
-      id: a.id,
+      postId: postId,
+      id: id,
     }
     dispatch(removeCommentList(ids))
   }

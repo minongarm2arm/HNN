@@ -26,41 +26,6 @@
     }
   ],
   "comment": [
-    {},
-    {
-      "postId": 1,
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오전 1:25:29",
-      "likes": 0,
-      "commentText": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "id": "ndYzO9N7nfWSRvLF2JBNg"
-    },
-    {
-      "postId": 1,
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오전 1:25:48",
-      "likes": 0,
-      "commentText": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "id": "kZbBTVGLJdn6q9zoh3ahv"
-    },
-    {
-      "postId": 1,
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오전 1:26:01",
-      "likes": 0,
-      "commentText": "zzz",
-      "id": "egUnqmxzPLGsvxI6AtpeH"
-    },
-    {
-      "postId": 1,
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오전 1:30:44",
-      "likes": 0,
-      "commentText": "sss",
-      "id": "RHM71uH57ysi3BONcRge3"
-    }
-  ],
-  "comment": [
     {
       "postId": 1,
       "name": "닉네임",
@@ -69,25 +34,11 @@
       "id": "JWTXl7EbSfZIb6ayfxJ6P"
     },
     {
-      "postId": "1",
+      "postId": 1,
       "id": "1m2UaGJbC8VKb8WTyV4T9",
       "name": "닉네임",
-      "date": "2022. 8. 9. 오후 5:21:00",
-      "commentText": "gsfdgr3t234"
-    },
-    {
-      "postId": "1",
-      "id": "0jSFuwTOZjzMXW6J1iGuE",
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오후 6:04:30",
-      "commentText": "sdafasfadsfdasfasf"
-    },
-    {
-      "postId": 1,
-      "id": "ZMtqeLO1NsoW6hHjMFR2n",
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오후 6:15:36",
-      "commentText": "sdafdasfdasfadsf"
+      "date": "2022. 8. 9. 오후 6:23:54",
+      "commentText": "asdfadsfagfdsh"
     }
   ]
 }

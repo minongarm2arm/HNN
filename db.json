@@ -113,6 +113,16 @@
       "email": "2222@naver.com",
       "password": "$2a$10$7HdmJuTTrQ7nrQez2rAqbujwaZTTwU4RIuDdCvSQCvPy6g.GLkfWC",
       "id": 6
+    },
+    {
+      "email": "testcode@naver.com",
+      "password": "$2a$10$/tuM/GiGdZ5OaNlpP5wtAO7r291BKA/412pgbDu45jfQ969KuTNxG",
+      "id": 7
+    },
+    {
+      "email": "test2222@naver.com",
+      "password": "$2a$10$K6zBFVxO2tyA2KP6P74hHe7i5EwK3TU7UocaDJFYYX14YhJc8jOkq",
+      "id": 8
     }
   ]
 }

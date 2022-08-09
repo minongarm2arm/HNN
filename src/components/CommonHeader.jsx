@@ -1,25 +1,32 @@
+import React from "react";
 import styled from "styled-components";
 import logo700 from '../src_assets/logo700.png'
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const CommonHeader = () => {
+  const navigate = useNavigate()
+  const [isLog, setIsLog] = useState(true)
+
+
   return (
     <StCommonHeader>
       <StLeftContainer>
-        <StLogo>
+        <StLogo onClick={() => navigate("/")}>
           <StLogoImg/>
         </StLogo>
       </StLeftContainer>
       <StRightContainer>
         <StNavContainer>
           <StNavUl>
-            <StNavLi>
+            <StNavLi onClick={() => navigate("/mypage")}>
               <div className={"item"}>My Page</div>
             </StNavLi>
-            <StNavLi>
+            <StNavLi onClick={() => navigate("/post")}>
               <div className={"item"}>Posting</div>
             </StNavLi>
-            <StNavLi>
-              <div className={"item"}>Logout</div>
+            <StNavLi onClick={() => navigate("/login")}>
+              <div className={"item"}>{isLog ? "LogIn" : "LogOut"}</div>
             </StNavLi>
           </StNavUl>
         </StNavContainer>
@@ -27,6 +34,8 @@ const CommonHeader = () => {
     </StCommonHeader>
   )
 }
+
+export default CommonHeader
 
 const StCommonHeader = styled.header`
   display: flex;
@@ -59,6 +68,7 @@ const StNavUl = styled.ul`
 const StNavLi = styled.li`
   padding: 10px 20px;
   cursor: pointer;
+
   &:hover .item::before {
     width: 100%;
   }
@@ -66,6 +76,7 @@ const StNavLi = styled.li`
   & .item {
     position: relative;
     transition: 0.5s;
+
     &::before {
       content: "";
       transition: 0.5s;
@@ -92,5 +103,3 @@ const StLogoImg = styled.div`
   background-size: cover;
   cursor: pointer;
 `
-
-export default CommonHeader

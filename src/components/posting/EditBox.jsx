@@ -12,7 +12,7 @@ import { getPosts, patchPosts } from "../../redux/modules/postSlice";
 const EditBox = () => {
   const dispatch = useDispatch();
 
-  // id에 해당하는 포스트를 불러온다 
+  // id에 해당하는 포스트를 ...???
   const {id} = useParams();
 
   useEffect(()=> {
@@ -20,11 +20,10 @@ const EditBox = () => {
   },[])
 
   
+  //불러오기..?
   const postEdit = useSelector((state)=> state.posts)
 
-  
-  // 업로드한 이미지 미리보기
-  const [imageSrc, setImageSrc] = useState('');
+  const [post, setPost] = useState()
 
   const [posts, setPosts] = useState(null);
 
@@ -37,16 +36,22 @@ const EditBox = () => {
     fetchPosts();
   }, []);
 
+
+  // 업로드한 이미지 미리보기
+  const [imageSrc, setImageSrc] = useState('');
+
+
   // base64 이미지 인코딩
   const encodeFileToBase64 = async (fileBlob) => {
-    
     const reader = new FileReader();
     reader.readAsDataURL(fileBlob);
-    
     return new Promise((resolve)=>{
       reader.onload=()=> {
-        // console.log(reader.result)
         setImageSrc(reader.result);
+        setEditPost({
+          ...editPost,
+          imgFile: reader.result,
+        });
         resolve();
       };
     });
@@ -56,12 +61,15 @@ const EditBox = () => {
   // 수정한 값??
   const [editPost, setEditPost] = useState({
     id: id,
-    image: postEdit.image,
+    imgFile: postEdit.imgFile,
     food: postEdit.food,
     restaurant: postEdit.restaurant,
     location: postEdit.location,
     review: postEdit.review,
   });
+
+  //imageFile code
+  // console.log(postEdit.imgFile)
 
   // 수정버튼 이벤트 핸들러
   const onEditHandler = (id, edit) => {
@@ -78,26 +86,18 @@ const EditBox = () => {
           }}
         >
           <StPostImg>
-            { 
-              // {placeholder} && 
-              <img
-                src={imageSrc}
-                alt=''
-              />
-            }
+              <img src={postEdit.imgFile} alt=''/>
           </StPostImg>
           <StPostInput
             id="image"
             type="file"
             accept="image/png, image/jpeg"
             onChange={(e) => {
-              const {value} = e.target;
+              const {value} = encodeFileToBase64(e.target.files[0]);
               setEditPost({
                 ...editPost,
-                image: value,
+                imgFile: value,
               });
-              // ~~~리사이즈~~~
-              encodeFileToBase64(e.target.files[0])
             }}
           />
           <StHelpText>

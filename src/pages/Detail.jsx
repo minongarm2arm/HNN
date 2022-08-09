@@ -33,7 +33,9 @@ const Detail = () => {
         </StLeftContainer>
         <StRightContainer>
           <Comment commentLists={commentLists}/>
-          <Pagnation commentPerPage={commentPerPage} totalComments={commentList.length} paginate={setCurrentPage}/>
+          <Pagnation commentPerPage={commentPerPage}
+                     totalComments={commentList.length}
+                     paginate={setCurrentPage}/>
         </StRightContainer>
       </StDetail>
     </>

@@ -9,7 +9,7 @@ import { HiOutlineUserCircle } from "react-icons/hi"
 
 const MyPage = () => {
   return (
-        <Layout>
+        <>
         <CommonHeader />
         <h2>마이페이지</h2>
         <ProfileContainer>
@@ -47,7 +47,7 @@ const MyPage = () => {
             <p>@ UserName</p>
           </MainBoxLayout>
         </MainBoxContainer>
-      </Layout>
+      </>
   )
 }
 

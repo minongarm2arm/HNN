@@ -11,11 +11,14 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
   const {id} = useParams()
   const commentInput = useRef()
   const [commentText, setCommentText] = useState()
+  const [curPage, setCurPage] = useState(1)
+  const [btnActive, setBtnActive] = useState(1)
 
   const pageNumber = []
   for (let i = 1; i <= Math.ceil(totalComments / commentPerPage); i++) {
     pageNumber.push(i)
   }
+  console.log(pageNumber)
 
   useEffect(() => {
     dispatch(getCommentList(id))
@@ -23,7 +26,7 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
 
   const onAddList = (e) => {
     e.preventDefault()
-    if(commentInput.current.value.length < 1) {
+    if (commentInput.current.value.length < 1) {
       alert("1글자 이상 입력해주세요")
       return
     }
@@ -33,10 +36,32 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
       date: new Date().toLocaleString(),
       commentText,
       id: nanoid(),
-      isEdit:false,
+      isEdit: false,
     }
     dispatch(addCommentList(newCommentList))
     commentInput.current.value = ""
+  }
+
+  const onForwardHandler =() => {
+    if(curPage<2) {
+      return
+    } else {
+      setCurPage(curPage-1)
+      paginate(curPage-1)
+      toggleActive(curPage-1)
+    }
+  }
+
+  const onBackwardHandler = () => {
+    if(curPage<Math.ceil(totalComments / commentPerPage)) {
+      setCurPage(curPage+1)
+      paginate(curPage+1)
+      toggleActive(curPage+1)
+    }
+  }
+
+  const toggleActive = (number) => {
+    setBtnActive(number)
   }
 
   return (
@@ -48,18 +73,20 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
         <button onClick={onAddList}>게시</button>
       </StCommentForm>
       <StPagNation>
-        <button> {"<"} </button>
-
+        <StPageBtn onClick={onForwardHandler}> {"<"} </StPageBtn>
         <StPageNumBox>
           {
-            pageNumber.map((number)=> (
-              <li>
-                <button onClick={()=>paginate(number)}>{number}</button>
+            pageNumber.map((number) => (
+              <li key={number} onClick={()=>setCurPage(number)}>
+                <StPageBtn value={number} className={number==btnActive?"active":""} onClick={() => {
+                  toggleActive(number)
+                  paginate(number)
+                }}>{number}</StPageBtn>
               </li>
             ))
           }
         </StPageNumBox>
-        <button> ></button>
+        <StPageBtn onClick={onBackwardHandler}> ></StPageBtn>
       </StPagNation>
     </StPagnationWrapper>
   )
@@ -91,34 +118,12 @@ const StCommentForm = styled.form`
       opacity: 1;
     }
   }
-
-  & button {
-    border: none;
-    background-color: transparent;
-    padding: 10px;
-    font-size: 16px;
-    color: #0000ff;
-    opacity: 0.5;
-    font-weight: 700;
-    cursor: pointer;
-  }
 `
 
 const StPagNation = styled.div`
   display: flex;
   justify-content: center;
-
-  & > button {
-    border: none;
-    background-color: transparent;
-    padding: 10px;
-    margin: 0 5px;
-    cursor: pointer;
-
-    &:hover {
-      color: #0000ff;
-    }
-  }
+  margin-top: 5px;
 `
 
 const StPageNumBox = styled.ol`
@@ -126,18 +131,27 @@ const StPageNumBox = styled.ol`
   list-style: none;
   justify-content: space-between;
 
-  & > li {
-    & button {
-      cursor: pointer;
-      border: none;
-      background-color: transparent;
-      padding: 10px;
-      margin: 0 5px;
+`
 
-      &:hover {
-        color: #0000ff;
-      }
-    }
+const StPageBtn = styled.button`
+  background-color: transparent;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  color: #fd93a6;
+  margin: 0 5px;
+  &:hover {
+    background-color: #fcafbd;
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  }
+  
+  &.active {
+    background-color: #fcafbd;
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   }
 `
 export default Pagnation

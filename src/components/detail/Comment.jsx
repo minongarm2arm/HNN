@@ -1,26 +1,27 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import {getCommentList} from "../../redux/modules/comment";
+import {getCommentList, removeCommentList, updateCommentList} from "../../redux/modules/comment";
 import {useParams} from "react-router-dom";
+import CommentItem from "../../redux/modules/CommentItem";
 
 const Comment = () => {
   const {id} = useParams()
   const dispatch = useDispatch()
-  const commentList = useSelector((state)=> state.comment)
+  const commentList = useSelector((state) => state.comment)
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getCommentList(id))
-  },[])
+  }, [])
+
 
   return (
     <>
       <StCommentList>
         {commentList.map((a) => (
           <StCommentItem key={a.id}>
-            <p><span>닉네임</span>:{a.commentText}</p>
-            <p className={"desc"}><span className={"date"}>{a.date}</span><span><span
-              className={"heart"}>❤️</span>{a.likes}</span></p>
+            <CommentItem {...a}>
+            </CommentItem>
           </StCommentItem>
         ))}
       </StCommentList>
@@ -35,16 +36,35 @@ const StCommentList = styled.ul`
 `
 
 const StCommentItem = styled.li`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   padding: 10px;
-  margin: 15px 0;
+  margin: 10px 0;
+  
+  & .textArea {
+    width: 85%;
+    & p {
+      word-break: break-all;
+    }
 
-  & .desc {
+
+    & .nickName {
+      margin-bottom: 5px;
+    }
+
+    & .desc {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  }
+  
+  & .buttonArea {
     display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
+    flex-direction: column;
   }
 
   &:first-child {
@@ -58,6 +78,22 @@ const StCommentItem = styled.li`
 
   & .heart {
     margin-right: 10px;
+  }
+`
+
+const StButton = styled.button`
+  margin-bottom: 10px;
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: ${props => props.color};
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  
+  &:hover {
+    border: 1px solid ${props => props.color}; 
+    background-color: ${props => props.color};
+    color: white;
   }
 `
 

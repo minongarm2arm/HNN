@@ -55,17 +55,37 @@
       "location": "휴",
       "review": "휴",
       "id": 7
-    },
-    {
-      "email": "firstman2@gmail.com",
-      "password": "longpassword",
-      "id": 8
     }
   ],
   "comment": [
-    
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오후 10:11:51",
+      "commentText": "zzzz",
+      "id": "7wYom2gsRF_Z2sx36a44R",
+      "isEdit": false
+    },
+    {
+      "postId": 1,
+      "id": "BdV8SFMzEzW64lmxfgJzs",
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오후 10:11:58",
+      "commentText": "ssss"
+    },
+    {
+      "postId": 1,
+      "id": "WBF_K_UWiyU2rXXetRs2a",
+      "name": "닉네임",
+      "date": "2022. 8. 9. 오후 10:12:17",
+      "commentText": "dddd"
+    }
   ],
   "users": [
-  
+    {
+      "email": "12345678@naver.com",
+      "password": "$2a$10$pg3Va34H7foATBj6fSawZOW5IQ96le01RN60LozMXeTMEDZlrnjXe",
+      "id": 1
+    }
   ]
 }

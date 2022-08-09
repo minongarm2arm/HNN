@@ -170,6 +170,11 @@ height: 300px;
 margin: 10px;
 background-image: url(${placeholder});
 background-size: cover;
+& img{
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
 `
 const StHelpText = styled.p`
 font-size: 13px;

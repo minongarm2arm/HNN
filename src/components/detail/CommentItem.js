@@ -9,6 +9,7 @@ const CommentItem = ({postId, id, name, date, commentText}) => {
   const dispatch = useDispatch()
   const toggleIsEdit = () => setIsEdit(!isEdit)
   const [isEdit, setIsEdit] = useState(false)
+  const [inputText, setInputText] = useState(commentText)
   const [commentTexts, setCommentTexts] = useState('')
   const commentTextInput = useRef()
 
@@ -22,9 +23,14 @@ const CommentItem = ({postId, id, name, date, commentText}) => {
 
   const onChangeTextHandler = (e) => {
     setCommentTexts(e.target.value)
+    setInputText(e.target.value)
   }
 
   const onTextSubmitHandler = () => {
+    if(commentTextInput.current.value.length < 1) {
+      alert("1글자 이상 입력 해주세요")
+      return
+    }
     const ids = {
       postId: parseInt(postId),
       id: id,
@@ -42,7 +48,7 @@ const CommentItem = ({postId, id, name, date, commentText}) => {
         <p className={'nickName'}>닉네임</p>
         {
           isEdit? (
-              <input ref={commentTextInput} onChange={onChangeTextHandler} type="text"/>
+              <input value={inputText} ref={commentTextInput} onChange={onChangeTextHandler} type="text"/>
             ) :
             <p className={"comment"}>{commentText}</p>
         }

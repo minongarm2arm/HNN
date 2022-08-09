@@ -1,11 +1,29 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import CommonHeader from "../components/CommonHeader";
 import Comment from "../components/detail/Comment";
 import Pagnation from "../components/detail/Pagenation";
 import DetailInfo from "../components/detail/DetailInfo";
-
+import {useDispatch, useSelector} from "react-redux";
+import {getCommentList} from "../redux/modules/comment";
+import {useParams} from "react-router-dom";
 const Detail = () => {
+
+
+  const {id} = useParams()
+  const dispatch = useDispatch()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [commentPerPage, setPostPerPage] = useState(6);
+
+  let commentList = useSelector((state) => state.comment)
+  const indexOfLast = currentPage * commentPerPage
+  const indexOfFirst = indexOfLast - commentPerPage
+  let commentLists = commentList.slice(indexOfFirst, indexOfLast)
+
+  useEffect(() => {
+    dispatch(getCommentList(id))
+  }, [])
+
   return (
     <>
       <CommonHeader/>
@@ -14,8 +32,8 @@ const Detail = () => {
          <DetailInfo/>
         </StLeftContainer>
         <StRightContainer>
-          <Comment />
-          <Pagnation />
+          <Comment commentLists={commentLists}/>
+          <Pagnation commentPerPage={commentPerPage} totalComments={commentList.length} paginate={setCurrentPage}/>
         </StRightContainer>
       </StDetail>
     </>

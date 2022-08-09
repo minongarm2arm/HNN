@@ -6,17 +6,27 @@ import {useParams} from "react-router-dom";
 import {nanoid} from "nanoid";
 import {useEffect} from "react";
 
-const Pagnation = () => {
+const Pagnation = ({commentPerPage, totalComments, paginate}) => {
   const dispatch = useDispatch()
   const {id} = useParams()
   const commentInput = useRef()
   const [commentText, setCommentText] = useState()
+
+  const pageNumber = []
+  for (let i = 1; i <= Math.ceil(totalComments / commentPerPage); i++) {
+    pageNumber.push(i)
+  }
+
   useEffect(() => {
     dispatch(getCommentList(id))
   }, [])
 
   const onAddList = (e) => {
     e.preventDefault()
+    if(commentInput.current.value.length < 1) {
+      alert("1글자 이상 입력해주세요")
+      return
+    }
     const newCommentList = {
       postId: parseInt(id),
       name: "닉네임",
@@ -39,10 +49,15 @@ const Pagnation = () => {
       </StCommentForm>
       <StPagNation>
         <button> {"<"} </button>
+
         <StPageNumBox>
-          <li>
-            <button>1</button>
-          </li>
+          {
+            pageNumber.map((number)=> (
+              <li>
+                <button onClick={()=>paginate(number)}>{number}</button>
+              </li>
+            ))
+          }
         </StPageNumBox>
         <button> ></button>
       </StPagNation>

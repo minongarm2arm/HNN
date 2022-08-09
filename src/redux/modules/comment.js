@@ -3,14 +3,44 @@ import axios from "axios";
 
 
 export const getCommentList = createAsyncThunk("GET_LIST", async (id) => {
-  const response = await axios.get(`http://localhost:3001/comment?postId=${id}`)
-  return response.data
+  try {
+    const response = await axios.get(`http://localhost:3001/comment?postId=${id}`)
+    return response.data
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 export const addCommentList = createAsyncThunk("ADD_LIST", async (newCommentList) => {
-  const response = await axios.post(`http://localhost:3001/comment?postId=${newCommentList.postId}`, newCommentList)
-  return response.data
+  try {
+    const response = await axios.post(`http://localhost:3001/comment?postId=${newCommentList.postId}`, newCommentList)
+    return response.data
+  } catch (err) {
+    console.log(err)
+  }
 })
+
+export const removeCommentList = createAsyncThunk("REMOVE_LIST", async (ids) => {
+  try {
+    await axios.delete(`http://localhost:3001/comment/${ids.id}`)
+    return (ids.id)
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+export const updateCommentList = createAsyncThunk("UPDATE_LIST", async (ids) => {
+  console.log(ids.id)
+  try {
+    const response =  await axios.put(`http://localhost:3001/comment/${ids.id}`, {
+      ...ids
+    })
+    return response.data
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 
 const initialState = [];
 
@@ -21,7 +51,19 @@ export const commentSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getCommentList.fulfilled]: (state, {payload}) => [...payload],
-    [addCommentList.fulfilled]: (state, {payload}) => [...state, payload]
+    [addCommentList.fulfilled]: (state, {payload}) => [...state, payload],
+    [removeCommentList.fulfilled]: (state, {payload}) => (
+      state.filter((list) => list.id !== payload)
+    ),
+    [updateCommentList.fulfilled]: (state, {payload}) => {
+      return state.map((list) => {
+        if (list.id === payload.id) {
+          return {...list, commentText: payload.commentText}
+        } else {
+          return list
+        }
+      })
+    },
   }
 });
 

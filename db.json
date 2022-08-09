@@ -63,66 +63,8 @@
     }
   ],
   "comment": [
-    {
-      "postId": 1,
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오전 4:30:14",
-      "commentText": "test1",
-      "id": "JWTXl7EbSfZIb6ayfxJ6P"
-    },
-    {
-      "postId": 1,
-      "id": "1m2UaGJbC8VKb8WTyV4T9",
-      "name": "닉네임",
-      "date": "2022. 8. 9. 오후 6:23:54",
-      "commentText": "asdfadsfagfdsh"
-    },
-    {
-      "email": "firstman2@gmail.com",
-      "password": "longpassword",
-      "id": "sKYaJqU"
-    }
+    
   ],
   "users": [
-    {
-      "email": "firstman@gmail.com",
-      "password": "$2a$10$jeYyTOK1Cn.3ECB3wIyMWeDSvozpz4P6oxZ6IdbtoTg11judlRqZO",
-      "id": 1
-    },
-    {
-      "email": "firstman2@gmail.com",
-      "password": "$2a$10$sCYUp5wZSm/uotPwyYRV2.KNpP.GR8Rib5xqfLITHBb4GZJjMHOh2",
-      "id": 2
-    },
-    {
-      "email": "firstman3@gmail.com",
-      "password": "$2a$10$9hwV8/dx4avkdpVmTX0SIuql5zXQU5lMpxZfs0F1qDOUZiqEQwf/m",
-      "id": 3
-    },
-    {
-      "email": "dsfads@naver.com",
-      "password": "$2a$10$tiWRGT0p3NwRwuHNK1Fa7uuHhwzmsVYzp/8XnwKdl73JONYvG0W9m",
-      "id": 4
-    },
-    {
-      "email": "1111@naver.com",
-      "password": "$2a$10$R2/7rqND3L1b9RN2Y1noU.dMtIXhjRdE7kFbRZHtiuBwtHlpXijeW",
-      "id": 5
-    },
-    {
-      "email": "2222@naver.com",
-      "password": "$2a$10$7HdmJuTTrQ7nrQez2rAqbujwaZTTwU4RIuDdCvSQCvPy6g.GLkfWC",
-      "id": 6
-    },
-    {
-      "email": "testcode@naver.com",
-      "password": "$2a$10$/tuM/GiGdZ5OaNlpP5wtAO7r291BKA/412pgbDu45jfQ969KuTNxG",
-      "id": 7
-    },
-    {
-      "email": "test2222@naver.com",
-      "password": "$2a$10$K6zBFVxO2tyA2KP6P74hHe7i5EwK3TU7UocaDJFYYX14YhJc8jOkq",
-      "id": 8
-    }
   ]
 }

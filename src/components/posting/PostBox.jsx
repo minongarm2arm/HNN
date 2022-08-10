@@ -7,10 +7,14 @@ import placeholder from '../../src_assets/placeholder.png'
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getPosts } from "../../redux/modules/postSlice";
+//custom hook
+import useInputCheck from "../../hooks/useInput";
 
 
 const PostBox = () => {
   const dispatch = useDispatch();
+
+  const [input, setInput] = useInputCheck();
 
   // id ~~???
   const {id} = useParams();
@@ -29,28 +33,7 @@ const PostBox = () => {
   // 업로드한 이미지 미리보기 파일
   const [imageSrc, setImageSrc] = useState('');
   
-  // 이미지 압축하기 
-  const imgCompress = async (fileBlob) => {
-    console.log('압축시작')
 
-    const options = {
-      maxSizeMB: 0.02,
-      maxWidthOrHeight: 300,
-      useWebWorker: true,
-    };
-    try {
-      const compressedFile = await imageCompression(fileBlob, options)
-    }
-    catch (error) {
-      console.log(error);
-    }
-  };
-
-  // const imageHandler = async (e) => {
-  //   // 이벤트에 있는 이미지들을 압축하고 base64로 변환해서 변수에 담는다.
-  //     const newImages = await Promise.all([...e.target.files].map(async (file) => 
-  //       imageCompression.getDataUrlFromFile(await imageCompression(file, compressOptions))));
-  // }
 
   // 이미지 인코딩해서 미리보기 띄우고 저장
   const encodeFileToBase64 = async (fileBlob) => {
@@ -87,6 +70,7 @@ const PostBox = () => {
             accept="image/png, image/jpeg"
             onChange={(e) => {
               const {value} = encodeFileToBase64(e.target.files[0]);
+              console.log(e.target.files)
               setPost({
                 ...post,
                 imgFile: value,

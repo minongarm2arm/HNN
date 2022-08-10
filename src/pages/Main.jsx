@@ -16,6 +16,8 @@ const Main = () => {
       axios.post("http://localhost:3001/posts", post);
     };
 
+    console.log("아 귀찮아!!!!")
+
     useEffect((post) => {
 
     } )

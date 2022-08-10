@@ -41,8 +41,6 @@ export const postsSlice = createSlice({
   extraReducers: {
     [getPosts.fulfilled]: (state, {payload}) => payload,
     [patchPosts.fulfilled]: (state, {payload}) => payload,
-    
-
   }
 });
 

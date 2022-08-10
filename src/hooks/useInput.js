@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 
-const useTextField = (initState, verifyState) => {
+const useInput = (initialValue, validator) => {
 
-  const [state, setState] = useState(initState);
-  const [error, setError] = useState(null);
-  const [didInit, setDidInit] = useState(false);
+  const [value, setValue] = useState(initialValue);
 
-  useEffect(()=>{
-    if(!didInit) { // 사용자가 입력하기 전 상태
-      setError(null); // 입력 전까지는 error 미노출
-      setDidInit(true); // state가 최초 변경되는 시점에 didInit true
+  const onChange = (e) => {
+    const result = validator(e.target.value);
+    console.log(result)
+    if (result.isValid) {
+      setValue(e.target.value);
     } else {
-      setError(verifyState(state));
+      alert(result.message);
     }
-  }, [state]);
+  };
 
-  return [state, setState, error]
-}
+  return { value, onChange };
+};
 
-export default useTextField;
+export default useInput;

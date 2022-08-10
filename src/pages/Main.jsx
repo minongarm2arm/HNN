@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components"
 import CommonHeader from "../components/CommonHeader"
-import Layout from "../components/Layout"
 import { IoSearch } from "react-icons/io5"
+import placeholder from "../src_assets/placeholder.png";
 
 
 const Main = () => {
   
   return (
-    <Layout>
+    <>
       <CommonHeader />
       <h2>메인</h2>
       <SearchBar>
@@ -25,31 +25,97 @@ const Main = () => {
 
       <MainBoxContainer>
         <MainBoxLayout>
-          <MainBox />
+          <MainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+                <p>음식명</p>
+                <p>가게명</p>
+                <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </MainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox />
+          <MainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+                <p>음식명</p>
+                <p>가게명</p>
+                <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </MainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox />
+          <MainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+                <p>음식명</p>
+                <p>가게명</p>
+                <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </MainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox />
+          <MainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+                <p>음식명</p>
+                <p>가게명</p>
+                <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </MainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox />
+          <MainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+                <p>음식명</p>
+                <p>가게명</p>
+                <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </MainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox />
+          <MainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </MainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
       </MainBoxContainer>
-    </Layout>
+    </>
   )
 }
 
@@ -76,16 +142,47 @@ const MainBoxLayout = styled.div`
   & > p {
     /* flex: 1 1 100%; */
     margin-top: 7px;
-    width: 180px;
+    width: 220px;
   }
 `;
 
 const MainBox = styled.div`
-  width: 180px;
+  width: 220px;
   height: 200px;
-  border: 1px solid black;
   border-radius: 30px;
+  position: relative;
+  overflow: hidden;
 `;
+
+const StPostImg = styled.div`
+  background-image: url(${placeholder});
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
+
+const StPostHover = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  
+  &:hover {
+    opacity: 1;
+  }
+  & .hoverText {
+    padding: 30px;
+    & p {
+      margin: 10px 0;
+    }
+  }
+`
 
 
 export default Main;

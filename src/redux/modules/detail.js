@@ -2,8 +2,13 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getPost = createAsyncThunk("GET_POST", async (id) => {
-  const response = await axios.get(`http://localhost:3001/posts?id=${id}`)
-  return response.data
+  try {
+    const response = await axios.get(`http://localhost:3001/posts?id=${id}`)
+    return response.data
+  }catch (err) {
+    console.log(err)
+  }
+
 })
 
 const initialState = [];

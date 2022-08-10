@@ -1,11 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useDispatch } from "react-redux/es/exports";
+import { getPosts } from "../redux/modules/postSlice";
 
 // components
-import PostBox from "../components/postbox/PostBox";
+import CommonHeader from "../components/CommonHeader";
+import EditBox from "../components/posting/EditBox";
 
 
 const Edit = () => {
-  return <div>어려웡</div>
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getPosts());
+  }, [dispatch]);
+
+  return (
+    <>
+      <CommonHeader/>
+      <EditBox/>
+    </>
+  )
 }
 
 export default Edit

@@ -1,10 +1,18 @@
 import React from "react";
 
+
 // components
-import PostBox from "../components/postbox/PostBox";
+import CommonHeader from "../components/CommonHeader";
+import PostBox from "../components/posting/PostBox";
+
 
 const Post = () => {
-  return <PostBox/>
+  return (
+    <>
+      <CommonHeader/>
+      <PostBox/>
+    </>
+  )
 }
 
 export default Post

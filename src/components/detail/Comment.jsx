@@ -1,27 +1,16 @@
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 import styled from "styled-components";
-import {useDispatch, useSelector} from "react-redux";
-import {getCommentList, removeCommentList, updateCommentList} from "../../redux/modules/comment";
-import {useParams} from "react-router-dom";
+
 import CommentItem from "./CommentItem";
 
-const Comment = () => {
-  const {id} = useParams()
-  const dispatch = useDispatch()
-  const commentList = useSelector((state) => state.comment)
-
-  useEffect(() => {
-    dispatch(getCommentList(id))
-  }, [])
-
+const Comment = ({commentLists}) => {
 
   return (
     <>
       <StCommentList>
-        {commentList.map((a) => (
+        {commentLists.map((a) => (
           <StCommentItem key={a.id}>
-            <CommentItem {...a}>
-            </CommentItem>
+            <CommentItem {...a} />
           </StCommentItem>
         ))}
       </StCommentList>

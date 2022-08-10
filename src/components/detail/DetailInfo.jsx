@@ -12,11 +12,11 @@ const DetailInfo = () => {
   const {id} = useParams()
   const dispatch = useDispatch()
   const [commentLength,setCommentLength] = useState(0)
-
   const postData = useSelector((state => state.detail))
   useEffect(()=> {
     dispatch(getPost(id))
   },[])
+
 
 
   const comment = useSelector((state)=> state.comment)
@@ -29,8 +29,9 @@ const DetailInfo = () => {
 
   return (
     <>
-      <StImageBox>
-      </StImageBox>
+      {postData.map((data) =>
+        <StImageBox key={data.id}  src={data.imgFile}/>
+      )}
       <StImageInfo>
         <StInfoLeft>
           {postData.map((data)=> (
@@ -55,13 +56,14 @@ const DetailInfo = () => {
   )
 }
 
-const StImageBox = styled.div`
+const StImageBox = styled.img`
   background-image: url(${placeholder});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  padding-bottom: 70%;
+  height: 300px;
+  object-fit: fill;
 `
 
 const StImageInfo = styled.div`

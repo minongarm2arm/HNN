@@ -3,9 +3,22 @@ import styled from "styled-components"
 import CommonHeader from "../components/CommonHeader"
 import { IoSearch } from "react-icons/io5"
 import placeholder from "../src_assets/placeholder.png";
+import MainBox from "../components/main/MainBox";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 const Main = () => {
+
+    const [post, setpost] = useState();
+
+    const onSubmitHandler = (post) => {
+      axios.post("http://localhost:3001/posts", post);
+    };
+
+    useEffect((post) => {
+
+    } )
   
   return (
     <>
@@ -23,9 +36,11 @@ const Main = () => {
         </select>
       </SearchBar>
 
+      <MainBox />
+
       <MainBoxContainer>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -36,11 +51,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -51,11 +66,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -66,11 +81,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -81,11 +96,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -96,11 +111,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -111,7 +126,7 @@ const Main = () => {
               <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
       </MainBoxContainer>
@@ -146,7 +161,7 @@ const MainBoxLayout = styled.div`
   }
 `;
 
-const MainBox = styled.div`
+const StMainBox = styled.div`
   width: 220px;
   height: 200px;
   border-radius: 30px;

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import CommentItem from "./CommentItem";
 
 const Comment = ({commentLists}) => {
-
   return (
     <>
       <StCommentList>

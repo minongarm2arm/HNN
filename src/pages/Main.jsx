@@ -7,10 +7,6 @@ import MainBox from "../components/main/MainBox";
 
 
 const Main = () => {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
   
   return (
     <>

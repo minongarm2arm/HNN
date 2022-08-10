@@ -7,6 +7,7 @@ import DetailInfo from "../components/detail/DetailInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {getCommentList} from "../redux/modules/comment";
 import {useParams} from "react-router-dom";
+import axios from "axios";
 const Detail = () => {
 
 
@@ -23,6 +24,7 @@ const Detail = () => {
   useEffect(() => {
     dispatch(getCommentList(id))
   }, [])
+
 
   return (
     <>

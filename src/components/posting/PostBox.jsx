@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import imageCompression from "browser-image-compression";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import placeholder from '../../src_assets/placeholder.png'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getPosts } from "../../redux/modules/postSlice";
-//custom hook
-import useInputCheck from "../../hooks/useInput";
 
 
-const PostBox = () => {
+
+const PostBox = (props) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const allInput = useRef();
+  const [visible, setVisible] = useState(true)
 
-  const [input, setInput] = useInputCheck();
 
   // id ~~???
   const {id} = useParams();
@@ -27,12 +27,24 @@ const PostBox = () => {
   const [post, setPost] = useState()
 
   const onSubmitHandler = (post) => {
-    axios.post("http://localhost:3001/posts", post);
+    if (allInput.value == null) {
+      alert('🐷: 빈 칸 없이 입력해주세요')
+    } else {
+      axios.post("http://localhost:3001/posts", post);
+      alert('저장 완료!');
+      navigate('/');
+    }
   };
+
+  // const onInputHandler = (post) => {
+  //   if (allInput.value !== null) {
+  //     setVisible(!visible)
+  //   } 
+  // };  
+
 
   // 업로드한 이미지 미리보기 파일
   const [imageSrc, setImageSrc] = useState('');
-  
 
 
   // 이미지 인코딩해서 미리보기 띄우고 저장
@@ -57,7 +69,9 @@ const PostBox = () => {
     <>
       <StPostBox>
         <StPostForm
+          ref={allInput}
           onSubmit={(e) => {
+            e.preventDefault();
             onSubmitHandler(post);
           }}
         >
@@ -70,7 +84,6 @@ const PostBox = () => {
             accept="image/png, image/jpeg"
             onChange={(e) => {
               const {value} = encodeFileToBase64(e.target.files[0]);
-              console.log(e.target.files)
               setPost({
                 ...post,
                 imgFile: value,
@@ -128,10 +141,23 @@ const PostBox = () => {
               setPost({
                 ...post,
                 review: value,
-              });
+              },{});
             }}
           />
-          <StPostBtn>저장</StPostBtn>
+          { visible &&
+          <StVisibleText>
+              🐷 빈 칸을 모두 채워주세요
+          </StVisibleText>
+          }
+          <StBtns>
+            <StPostBtn
+              color="#fcafbd"
+            >저장</StPostBtn>
+            <StPostBtn
+              color="#fcafbd"
+              onClick={() => navigate("/")}
+            >취소</StPostBtn>
+          </StBtns>
         </StPostForm>
       </StPostBox>
     </>
@@ -157,7 +183,7 @@ background-size: cover;
 & img{
   width: 300px;
   height: 300px;
-  object-fit: contain;
+  object-fit: cover;
 }
 `
 const StHelpText = styled.p`
@@ -187,8 +213,24 @@ flex-direction: column;
 align-items: center;
 `
 
+const StBtns = styled.div`
+width  : 300px;
+`
+
 const StPostBtn = styled.button`
-width: 300px;
+width: 140px;
 height: 40px;
-margin: 10px;
+margin: 10px 5px;
+cursor: pointer;
+background: none;
+border: solid 1px;
+:hover {
+  color: ${props=>props.color};
+}
+`
+
+const StVisibleText = styled.p`
+  font-size: 15px;
+  padding-top: 5px;
+  color: red;
 `

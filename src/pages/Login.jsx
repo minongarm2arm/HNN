@@ -17,15 +17,15 @@ const Login = () => {
       ...inputs,
       [name]: value
     })
-    console.log(value)
   }
 
   const onLoginHandler = async () => {
-    console.log(inputs)
     await axios.post("http://localhost:3001/login", {
       ...inputs
-    }).then(()=> {
-      
+    }).then((res)=> {
+      console.log(res.data)
+      localStorage.setItem("user", JSON.stringify(res.data.user.email))
+      localStorage.setItem("token", JSON.stringify(res.data.accessToken))
       navigate("/")
     }).catch((res)=> {
       if (res.response.data === "Cannot find user") {

@@ -287,6 +287,13 @@
       "password": "$2a$10$Kr0h2ScDM4uFBhYO/fAnL.Fua7TyCxwuFzzoUAJf4sECpLGfZVB9u",
       "nick": "test",
       "id": 1
+    },
+    {
+      "email": "1111@naver.com",
+      "password": "$2a$10$BDpE4etwJdhsqa75YSaEC.hQVvYzzlXwr7rkSN6jIvn03bW5gy.QC",
+      "nick": "2222",
+      "introduction": "",
+      "id": 2
     }
   ]
 }

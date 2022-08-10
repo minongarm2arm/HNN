@@ -6,93 +6,98 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import placeholder from '../../src_assets/placeholder.png'
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { getPosts } from "../../redux/modules/postSlice";
+import { getPosts, patchPosts } from "../../redux/modules/postSlice";
 
 
-const PostBox = () => {
-  const postEdit = useSelector((state)=> state.posts)
-
-  console.log(postEdit)
-
-  const {id} = useParams();
+const EditBox = () => {
   const dispatch = useDispatch();
+
+  // id에 해당하는 포스트를 ...???
+  const {id} = useParams();
 
   useEffect(()=> {
     dispatch(getPosts(id))
   },[])
 
-  const [post, setPost] = useState({
-    id: '',
-    image: '',
-    food: '',
-    restaurant: '',
-    location: '',
-    review: '',
-  })
-
-  const [imageSrc, setImageSrc] = useState('');
   
+  //불러오기..?
+  const postEdit = useSelector((state)=> state.posts)
+
+  const [post, setPost] = useState()
+
   const [posts, setPosts] = useState(null);
 
   const fetchPosts = async () => {
-    const { data } = await axios.get("http://localhost:3001/posts?id={id}");
+    const { data } = await axios.get('http://localhost:3001/posts?id={id}');
     setPosts(data);
   };
- 
-
-  const onSubmitHandler = (post) => {
-    axios.post("http://localhost:3001/posts", post);
-  };
-
-
+  
   useEffect(() => {
     fetchPosts();
   }, []);
 
+
+  // 업로드한 이미지 미리보기
+  const [imageSrc, setImageSrc] = useState('');
+
+
+  // base64 이미지 인코딩
   const encodeFileToBase64 = async (fileBlob) => {
-    
     const reader = new FileReader();
     reader.readAsDataURL(fileBlob);
-    
     return new Promise((resolve)=>{
       reader.onload=()=> {
-        // console.log(reader.result)
         setImageSrc(reader.result);
+        setEditPost({
+          ...editPost,
+          imgFile: reader.result,
+        });
         resolve();
       };
     });
   };
+
+  
+  // 수정한 값??
+  const [editPost, setEditPost] = useState({
+    id: id,
+    imgFile: postEdit.imgFile,
+    food: postEdit.food,
+    restaurant: postEdit.restaurant,
+    location: postEdit.location,
+    review: postEdit.review,
+  });
+
+  //imageFile code
+  // console.log(postEdit.imgFile)
+
+  // 수정버튼 이벤트 핸들러
+  const onEditHandler = (id, edit) => {
+    axios.patch(`http://localhost:3001/posts/${id}`, edit);
+  };
+
   
   return (
     <>
       <StPostBox>
         <StPostForm
           onSubmit={(e) => {
-            onSubmitHandler(post);
+            onEditHandler(id, editPost);
           }}
         >
           <StPostImg>
-            { 
-              // {placeholder} && 
-              <img
-                src={imageSrc}
-                alt=''
-              />
-            }
+              <img src={postEdit.imgFile} alt=''/>
           </StPostImg>
           <StPostInput
             id="image"
             type="file"
             accept="image/png, image/jpeg"
             onChange={(e) => {
-              const {value} = e.target;
-              setPost({
-                ...post,
-                image: value,
+              const {value} = encodeFileToBase64(e.target.files[0]);
+              setEditPost({
+                ...editPost,
+                imgFile: value,
               });
-              console.log(e.target.files[0])
-              // ~~~리사이즈~~~
-              encodeFileToBase64(e.target.files[0])
             }}
           />
           <StHelpText>
@@ -100,13 +105,13 @@ const PostBox = () => {
           </StHelpText>
           <StPostInput 
             id="food"
-            placeholder="음식 이름"
+            placeholder="음식"
             type="text"
+            defaultValue={postEdit.food}
             onChange={(e) => {
               const {value} = e.target;
-              // console.log(value)
-              setPost({
-                ...post,
+              setEditPost({
+                ...editPost,
                 food: value,
               });
             }}
@@ -114,12 +119,13 @@ const PostBox = () => {
           <StPostInput 
             id="restaurant"
             placeholder="식당 이름"
+            defaultValue={postEdit.restaurant}
             type="text"
             onChange={(e) => {
               const {value} = e.target;
               // console.log(value)
-              setPost({
-                ...post,
+              setEditPost({
+                ...editPost,
                 restaurant: value,
               });
             }}
@@ -127,12 +133,13 @@ const PostBox = () => {
           <StPostInput 
             id="location"
             placeholder="식당 위치"
+            defaultValue={postEdit.location}
             type="text"
             onChange={(e) => {
               const {value} = e.target;
               // console.log(value)
-              setPost({
-                ...post,
+              setEditPost({
+                ...editPost,
                 location: value,
               });
             }}
@@ -140,23 +147,24 @@ const PostBox = () => {
           <StTextarea
             id="review"
             placeholder='후기'
+            defaultValue={postEdit.review}
             onChange={(e) => {
               const {value} = e.target;
               // console.log(value)
-              setPost({
-                ...post,
-                review: value,
+              setEditPost({
+                ...editPost,
+                review: value
               });
             }}
           />
-          <StPostBtn>저장</StPostBtn>
+          <StPostBtn>수정</StPostBtn>
         </StPostForm>
       </StPostBox>
     </>
   )
 }
 
-export default PostBox
+export default EditBox
 
 const StPostBox = styled.div`
 width: 700px;
@@ -172,6 +180,11 @@ height: 300px;
 margin: 10px;
 background-image: url(${placeholder});
 background-size: cover;
+& img{
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
 `
 const StHelpText = styled.p`
 font-size: 13px;
@@ -205,32 +218,3 @@ width: 300px;
 height: 40px;
 margin: 10px;
 `
-
-
-
-
-
-
-
-
-
-// 나중에 별점 추가하면 사용하기
-{/* <select 
-            id="star"
-            style={{width:'300px', margin:'5px'}}
-            onChange={(e) => {
-              const {value} = e.target;
-              // console.log(value)
-              setPost({
-                ...post,
-                star: value,
-              });
-            }}
-          >
-  <option disabled selected> --별점후기-- </option>
-  <option> ⭐ </option>
-  <option> ⭐⭐ </option>
-  <option> ⭐⭐⭐ </option>
-  <option> ⭐⭐⭐⭐ </option>
-  <option> ⭐⭐⭐⭐⭐ </option>
-</select> */}

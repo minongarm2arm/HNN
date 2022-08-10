@@ -1,11 +1,10 @@
 import React, {useEffect} from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { getPosts } from "../redux/modules/postSlice";
-import axios from "axios";
 
 // components
 import CommonHeader from "../components/CommonHeader";
-import PostBox from "../components/postbox/PostBox";
+import EditBox from "../components/posting/EditBox";
 
 
 const Edit = () => {
@@ -18,7 +17,7 @@ const Edit = () => {
   return (
     <>
       <CommonHeader/>
-      <PostBox/>
+      <EditBox/>
     </>
   )
 }

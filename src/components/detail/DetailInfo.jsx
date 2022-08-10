@@ -5,17 +5,18 @@ import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPost} from "../../redux/modules/detail";
+import {FaRegCommentAlt} from "react-icons/fa";
 
 const DetailInfo = () => {
 
   const {id} = useParams()
   const dispatch = useDispatch()
   const [commentLength,setCommentLength] = useState(0)
-
   const postData = useSelector((state => state.detail))
   useEffect(()=> {
     dispatch(getPost(id))
   },[])
+
 
 
   const comment = useSelector((state)=> state.comment)
@@ -28,8 +29,9 @@ const DetailInfo = () => {
 
   return (
     <>
-      <StImageBox>
-      </StImageBox>
+      {postData.map((data) =>
+        <StImageBox key={data.id}  src={data.imgFile}/>
+      )}
       <StImageInfo>
         <StInfoLeft>
           {postData.map((data)=> (
@@ -42,7 +44,7 @@ const DetailInfo = () => {
         </StInfoLeft>
         <StInfoRight>
           <p>userName</p>
-          <p><span>❤️ 59</span><span>■{commentLength}</span></p>
+          <p className={"commentLength"}><FaRegCommentAlt/>{commentLength}</p>
         </StInfoRight>
       </StImageInfo>
       {postData.map((data)=> (
@@ -54,13 +56,14 @@ const DetailInfo = () => {
   )
 }
 
-const StImageBox = styled.div`
+const StImageBox = styled.img`
   background-image: url(${placeholder});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  padding-bottom: 70%;
+  height: 300px;
+  object-fit: fill;
 `
 
 const StImageInfo = styled.div`
@@ -85,6 +88,16 @@ const StInfoRight = styled.div`
   
   & p {
     padding: 3px 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    & svg {
+      margin-right: 5px;
+    }
+  }
+  
+  & .commentLength {
+    text-align: right;
   }
 `
 const StImageDesc = styled.div`

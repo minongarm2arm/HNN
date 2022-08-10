@@ -6,14 +6,13 @@ import placeholder from '../../src_assets/placeholder.png'
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getPosts } from "../../redux/modules/postSlice";
+import useInput from "../../hooks/useInput";
 
 
 
 const PostBox = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const allInput = useRef();
-  const [visible, setVisible] = useState(true)
 
 
   // id ~~???
@@ -27,20 +26,10 @@ const PostBox = (props) => {
   const [post, setPost] = useState()
 
   const onSubmitHandler = (post) => {
-    if (allInput.value == null) {
-      alert('🐷: 빈 칸 없이 입력해주세요')
-    } else {
       axios.post("http://localhost:3001/posts", post);
       alert('저장 완료!');
       navigate('/');
-    }
   };
-
-  // const onInputHandler = (post) => {
-  //   if (allInput.value !== null) {
-  //     setVisible(!visible)
-  //   } 
-  // };  
 
 
   // 업로드한 이미지 미리보기 파일
@@ -69,7 +58,6 @@ const PostBox = (props) => {
     <>
       <StPostBox>
         <StPostForm
-          ref={allInput}
           onSubmit={(e) => {
             e.preventDefault();
             onSubmitHandler(post);
@@ -144,11 +132,9 @@ const PostBox = (props) => {
               },{});
             }}
           />
-          { visible &&
           <StVisibleText>
               🐷 빈 칸을 모두 채워주세요
           </StVisibleText>
-          }
           <StBtns>
             <StPostBtn
               color="#fcafbd"

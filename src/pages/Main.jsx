@@ -7,6 +7,10 @@ import placeholder from "../src_assets/placeholder.png";
 
 
 const Main = () => {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   
   return (
     <>

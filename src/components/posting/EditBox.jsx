@@ -11,14 +11,10 @@ import { getPosts, patchPosts } from "../../redux/modules/postSlice";
 const EditBox = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [change, setChange] = useState(false);
 
   // id에 해당하는 포스트를 ...???
   const {id} = useParams();
-
-  useEffect(()=> {
-    dispatch(getPosts(id))
-  },[])
-
   
   //불러오기..?
   const postEdit = useSelector((state)=> state.posts)
@@ -39,12 +35,14 @@ const EditBox = (props) => {
   // 업로드한 이미지 미리보기
   const [imageSrc, setImageSrc] = useState('');
 
-  // 웨안되
-  // const [editImg, setEditImg] = useState({
-  //   editImg: postEdit.imgFile
-  // });
-
-  // console.log(editImg.editImg)
+ 
+  const [editImg, setEditImg] = useState('');
+  console.log(editImg)
+ 
+  useEffect(()=> {
+    dispatch(getPosts(id))
+    setEditImg(editPost.imgFile)
+  },[])
 
   // base64 이미지 인코딩
   const encodeFileToBase64 = async (fileBlob) => {
@@ -102,7 +100,11 @@ const EditBox = (props) => {
       <StPostBox>
         <StPostForm>
           <StPostImg>
-            <img src={imageSrc} alt=''/>
+            {
+              change ? 
+                <img src={imageSrc} alt=''/> 
+                : <img src={postEdit.imgFile} alt=''/>
+            }
           </StPostImg>
           <StPostInput
             id="image"
@@ -110,11 +112,12 @@ const EditBox = (props) => {
             accept="image/png, image/jpeg"
             onChange={(e) => {
               const {value} = encodeFileToBase64(e.target.files[0]);
-              // setEditImg(...imageSrc)
+              setEditImg(imageSrc)
               setEditPost({
                 ...editPost,
                 imgFile: value,
               });
+              setChange(true)
             }}
           />
           <StHelpText>

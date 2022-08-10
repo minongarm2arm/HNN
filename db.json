@@ -294,6 +294,13 @@
       "nick": "2222",
       "introduction": "",
       "id": 2
+    },
+    {
+      "email": "22222@nvaer.com",
+      "password": "$2a$10$/qRCECRM9IBZliL7FrlPe.PIJnYAyfXtUyI2BpNRj9sHlD04l15HS",
+      "nick": "2222",
+      "introduction": "",
+      "id": 3
     }
   ]
 }

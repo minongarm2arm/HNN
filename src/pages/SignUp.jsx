@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import CommonHeader from "../components/CommonHeader";
 import {useNavigate} from "react-router-dom";
+import "./signup.css"
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -9,7 +10,7 @@ const SignUp = () => {
     email: "",
     password: "",
     nick: "",
-    introduction:"",
+    introduction: "",
   })
 
   const [password2, setPassword2] = useState("")
@@ -64,25 +65,28 @@ const SignUp = () => {
   }
 
   return (
-    <div>
-      <h2>회원가입</h2>
-      <div>
-        이메일
-        <input name={"email"} value={email} type="text" onChange={onChange} placeholder={"이메일"}/>
+    <div className={"auth-wrapper"}>
+      <div className="auth-inner">
+        <h1>회원가입</h1>
+        <div>
+          이메일
+          <input name={"email"} value={email} type="text" onChange={onChange} placeholder={"이메일"}/>
+        </div>
+        <div>
+          비밀번호
+          <input name={"password"} value={password} type="text" onChange={onChange} placeholder={"비밀번호"}/>
+        </div>
+        <div>
+          재확인 비밀번호
+          <input name={"password2"} value={password2} type="text" onChange={onChangeRePassword}
+                 placeholder={"비밀번호 재확인"}/>
+        </div>
+        <div>
+          닉네임
+          <input name={"nick"} value={nick} type="text" onChange={onChange} placeholder={"닉네임"}/>
+        </div>
+        <button className={"btn"} onClick={onRegistHandler}>회원가입하기</button>
       </div>
-      <div>
-        비밀번호
-        <input name={"password"} value={password} type="text" onChange={onChange} placeholder={"비밀번호"}/>
-      </div>
-      <div>
-        재확인 비밀번호
-        <input name={"password2"} value={password2} type="text" onChange={onChangeRePassword} placeholder={"비밀번호 재확인"}/>
-      </div>
-      <div>
-        닉네임
-        <input name={"nick"} value={nick} type="text" onChange={onChange} placeholder={"닉네임"}/>
-      </div>
-      <button onClick={onRegistHandler}>회원가입하기</button>
     </div>
   )
 }

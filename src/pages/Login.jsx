@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
 import CommonHeader from "../components/CommonHeader";
+import "./signup.css"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -44,18 +45,20 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h2>로그인</h2>
+    <div className={"auth-wrapper"}>
+      <div className="auth-inner">
+      <h1>로그인</h1>
       <div>
         <input name={"email"} value={email} type="text" onChange={onChange} placeholder={"이메일"}/>
       </div>
       <div>
         <input name={"password"} value={password} type="text" onChange={onChange} placeholder={"비밀번호"}/>
       </div>
-      <button onClick={onLoginHandler}>로그인</button>
-      <button onClick={()=> {
+      <button className={"btn2"} onClick={onLoginHandler}>로그인</button>
+      <button className={"btn2"} onClick={()=> {
         navigate("/signup")
       }}>회원가입</button>
+      </div>
     </div>
   )
 }

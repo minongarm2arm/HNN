@@ -285,7 +285,8 @@
     {
       "email": "firstman3@gmail.com",
       "password": "$2a$10$hTYM/2.mMNDtW2/69.SyT.bVpC.eDVlbBdHQkor7lBuJ55PF1Yl2a",
-      "id": 1
+      "id": 1,
+      "nick": ""
     }
   ]
 }

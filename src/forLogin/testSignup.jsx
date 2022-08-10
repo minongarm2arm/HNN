@@ -1,9 +1,6 @@
 import React from "react";
-import Email from "./Email";
-import Nickname from "./Nickname";
-import Password from "./Password";
 
-class Signup extends React.Component {
+class TestSignup extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,7 +28,7 @@ class Signup extends React.Component {
     e.preventDefault();
 
     //이메일 유효성 검사 
-    const chkEmail = function(str) {
+    const chkEmail = function (str) {
       var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       return regExp.test(str) ? true : false;
     };
@@ -56,13 +53,14 @@ class Signup extends React.Component {
       fetch("http://localhost:3001/users/email", email_info)
         .then(res => res.json())
         .then(json => {
+          console.log(json)
           if (json === true) {
-            alert("사용 가능한 아이디입니다.");
+            alert("사용 가능한 이메일입니다.");
             this.setState({
               emailCheck: this.state.email
             });
           } else {
-            alert("이미 존재하는 아이디입니다.");
+            alert("이미 존재하는 이메일입니다.");
           }
         });
     }
@@ -80,7 +78,7 @@ class Signup extends React.Component {
   checkNickname = e => {
     e.preventDefault();
 
-    const chkNickname = function(str) {
+    const chkNickname = function (str) {
       var regNm = /^[가-힣]{2,15}|[a-zA-Z]{2,15}\s[a-zA-Z]{2,15}$/;
       return regNm.test(str) ? true : false;
     };
@@ -135,7 +133,7 @@ class Signup extends React.Component {
     e.preventDefault();
 
     //비밀번호 유효성 검사(영문, 숫자 혼합 6~20)
-    const chkPwd = function(str) {
+    const chkPwd = function (str) {
       var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
       return !reg_pwd.test(str) ? false : true;
     };
@@ -207,25 +205,33 @@ class Signup extends React.Component {
     return (
       <div>
         <h1>Signup</h1>
-        <br />
+        <br/>
         <div>
-          <Email
-            handleEmail={this.handleEmail}
-            checkEmail={this.checkEmail}
-            value={this.state.email}
-          />
-          <Nickname
-            handleNickname={this.handleNickname}
-            checkNickname={this.checkNickname}
-            value={this.state.nickname}
-          />
-          <Password
-            handlePW={this.handlePW}
-            handleRE_PW={this.handleRE_PW}
-            checkPW={this.checkPW}
-            value1={this.state.pw}
-            value2={this.state.re_pw}
-          />
+          <div>
+            email
+            <input
+              onChange={this.handleEmail} //onChange
+              value={this.state.email}
+              type={"text"}
+            />
+            <button onClick={this.checkEmail}>중복체크</button>
+          </div>
+          <div>
+            닉네임
+            <input type="text" value={this.state.nickname} onChange={this.handleNickname}/>
+            <button onClick={this.checkNickname}>중복체크</button>
+          </div>
+          <div>
+            비밀번호
+            <div>
+              <input value={this.state.pw} onChange={this.handlePW} type="text"/>
+            </div>
+            비밀번호 재확인
+            <div>
+              <input value={this.state.re_pw} onChange={this.handleRE_PW} type="text"/>
+              <button onClick={this.checkPW}>비밀번호 확인</button>
+            </div>
+          </div>
           <div>
             <button onClick={this.handleSubmit}>가입하기</button>
           </div>
@@ -235,4 +241,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default TestSignup;

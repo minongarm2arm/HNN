@@ -10,6 +10,7 @@ import MyPage from '../pages/MyPage'
 import Post from '../pages/Post'
 import SignUp from '../pages/SignUp'
 import Layout from "../components/Layout";
+import TestSignup from "../forLogin/testSignup";
 
 
 const Router = () => {
@@ -23,7 +24,7 @@ const Router = () => {
           <Route path="/" element={<Main/>}/>
           <Route path="/mypage" element={<MyPage/>}/>
           <Route path="/post" element={<Post/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/signup" element={<TestSignup/>}/>
         </Routes>
       </BrowserRouter>
     </Layout>

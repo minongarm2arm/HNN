@@ -37,8 +37,6 @@ const DetailInfo = () => {
     getNickName()
   })
 
-  // console.log(postData[0].name)
-
 
   return (
     <>
@@ -58,11 +56,11 @@ const DetailInfo = () => {
         <StInfoRight>
           <p>{postData[0]?.name}</p>
           <p className={"commentLength"}><FaRegCommentAlt/>{commentLength}</p>
-          {/*{*/}
-          {/*  postData[0].name === nickName*/}
-          {/*  ? <button onClick={()=> {navigate(`/edit/${id}`)}}>수정하기</button>*/}
-          {/*    : null*/}
-          {/*}*/}
+          {
+            postData[0]?.name === nickName
+            ? <button onClick={()=> {navigate(`/edit/${id}`)}}>수정하기</button>
+              : null
+          }
         </StInfoRight>
       </StImageInfo>
       {postData.map((data) => (

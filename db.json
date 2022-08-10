@@ -100,14 +100,6 @@
       "postId": 1,
       "name": "닉네임",
       "date": "2022. 8. 10. 오전 3:28:38",
-      "commentText": "gdf",
-      "id": "4W2vtsKgM4_z0SQT1HHTn",
-      "isEdit": false
-    },
-    {
-      "postId": 1,
-      "name": "닉네임",
-      "date": "2022. 8. 10. 오전 3:28:38",
       "commentText": "gsdf",
       "id": "R23s5jHmKzGbowjEcofA8",
       "isEdit": false
@@ -279,14 +271,22 @@
       "commentText": "g",
       "id": "nTzL6IqcC4ucrH1thgUoP",
       "isEdit": false
+    },
+    {
+      "postId": 1,
+      "name": "닉네임",
+      "date": "2022. 8. 10. 오후 8:15:39",
+      "commentText": "asdfsdaf",
+      "id": "6qsKomxJ7aFejeP4GzuOF",
+      "isEdit": false
     }
   ],
   "users": [
     {
-      "email": "firstman3@gmail.com",
-      "password": "$2a$10$hTYM/2.mMNDtW2/69.SyT.bVpC.eDVlbBdHQkor7lBuJ55PF1Yl2a",
-      "id": 1,
-      "nick": ""
+      "email": "2222@naver.com",
+      "password": "$2a$10$Kr0h2ScDM4uFBhYO/fAnL.Fua7TyCxwuFzzoUAJf4sECpLGfZVB9u",
+      "nick": "test",
+      "id": 1
     }
   ]
 }

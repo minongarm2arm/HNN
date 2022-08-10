@@ -53,13 +53,13 @@ class TestSignup extends React.Component {
       fetch("http://localhost:3001/users/email", email_info)
         .then(res => res.json())
         .then(json => {
-          console.log(json)
           if (json === true) {
             alert("사용 가능한 이메일입니다.");
             this.setState({
               emailCheck: this.state.email
             });
           } else {
+            console.log(json)
             alert("이미 존재하는 이메일입니다.");
           }
         });

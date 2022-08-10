@@ -9,8 +9,6 @@ import {getCommentList} from "../redux/modules/comment";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 const Detail = () => {
-
-
   const {id} = useParams()
   const dispatch = useDispatch()
   const [currentPage, setCurrentPage] = useState(1)

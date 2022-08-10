@@ -55,8 +55,6 @@ const CommentItem = ({postId, id, name, date, commentText}) => {
     getNickName()
   })
 
-  console.log(nickName)
-
   return (
     <>
       <div className="textArea">

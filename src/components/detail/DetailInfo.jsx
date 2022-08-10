@@ -13,6 +13,7 @@ const DetailInfo = () => {
   const {id} = useParams()
   const dispatch = useDispatch()
   const [commentLength, setCommentLength] = useState(0)
+  const [nickName, setNickName] = useState("")
   const postData = useSelector((state => state.detail))
   const comment = useSelector((state) => state.comment)
   useEffect(() => {
@@ -22,14 +23,12 @@ const DetailInfo = () => {
   useEffect(() => {
     comment.length && setCommentLength(comment.length)
   }, [comment.length])
-
-  let nickName = ""
   const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
     axios.get(`http://localhost:3001/users?email=${user}`)
       .then((res)=> {
-        return nickName = res.data[0].nick
+        return setNickName(res.data[0].nick)
       })
   }
 
@@ -37,6 +36,8 @@ const DetailInfo = () => {
     getNickName()
   })
 
+  console.log(postData[0]?.name)
+  console.log(nickName)
 
   return (
     <>

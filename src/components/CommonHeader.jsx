@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import logo700 from '../src_assets/logo700.png'
 import {useState} from "react";
@@ -8,6 +8,19 @@ const CommonHeader = () => {
   const navigate = useNavigate()
   const [isLog, setIsLog] = useState(true)
 
+
+  useEffect(()=> {
+    if(localStorage.getItem("token")===null) {
+      setIsLog(true)
+    }else {
+      setIsLog(false)
+    }
+  })
+
+  const onLogoutHandler = () => {
+    localStorage.clear()
+    navigate("/login")
+  }
 
   return (
     <StCommonHeader>
@@ -25,7 +38,10 @@ const CommonHeader = () => {
             <StNavLi onClick={() => navigate("/post")}>
               <div className={"item"}>Posting</div>
             </StNavLi>
-            <StNavLi onClick={() => navigate("/login")}>
+            <StNavLi onClick={() =>(
+              isLog?navigate("/login"): onLogoutHandler()
+            ) }
+              >
               <div className={"item"}>{isLog ? "LogIn" : "LogOut"}</div>
             </StNavLi>
           </StNavUl>

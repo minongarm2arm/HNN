@@ -10,6 +10,7 @@ import MyPage from '../pages/MyPage'
 import Post from '../pages/Post'
 import SignUp from '../pages/SignUp'
 import Layout from "../components/Layout";
+import TestSignup from "../forLogin/testSignup";
 
 
 const Router = () => {

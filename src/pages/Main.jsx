@@ -4,28 +4,14 @@ import CommonHeader from "../components/CommonHeader"
 import { IoSearch } from "react-icons/io5"
 import placeholder from "../src_assets/placeholder.png";
 import MainBox from "../components/main/MainBox";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 
 const Main = () => {
-
-    const [post, setpost] = useState();
-
-    const onSubmitHandler = (post) => {
-      axios.post("http://localhost:3001/posts", post);
-    };
-
-    console.log("아 귀찮아!!!!")
-
-    useEffect((post) => {
-
-    } )
   
   return (
     <>
       <CommonHeader />
-      <h2>메인</h2>
+      <h2>Main</h2>
       <SearchBar>
         <div>
         <input type="text" />

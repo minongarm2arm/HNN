@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getCommentList = createAsyncThunk("GET_LIST", async (id) => {
   try {
-    const response = await axios.get(`http://localhost:3001/comment?postId=${id}`)
+    const response = await axios.get(`http://try-eat.herokuapp.com/comment?postId=${id}`)
     return response.data
   } catch (err) {
     console.log(err)
@@ -13,7 +13,7 @@ export const getCommentList = createAsyncThunk("GET_LIST", async (id) => {
 
 export const addCommentList = createAsyncThunk("ADD_LIST", async (newCommentList) => {
   try {
-    const response = await axios.post(`http://localhost:3001/comment?postId=${newCommentList.postId}`, newCommentList)
+    const response = await axios.post(`http://try-eat.herokuapp.com/comment?postId=${newCommentList.postId}`, newCommentList)
     return response.data
   } catch (err) {
     console.log(err)
@@ -22,7 +22,7 @@ export const addCommentList = createAsyncThunk("ADD_LIST", async (newCommentList
 
 export const removeCommentList = createAsyncThunk("REMOVE_LIST", async (ids) => {
   try {
-    await axios.delete(`http://localhost:3001/comment/${ids.id}`)
+    await axios.delete(`http://try-eat.herokuapp.com/comment/${ids.id}`)
     return (ids.id)
   } catch (err) {
     console.log(err)
@@ -32,7 +32,7 @@ export const removeCommentList = createAsyncThunk("REMOVE_LIST", async (ids) => 
 export const updateCommentList = createAsyncThunk("UPDATE_LIST", async (ids) => {
   console.log(ids.id)
   try {
-    const response =  await axios.put(`http://localhost:3001/comment/${ids.id}`, {
+    const response =  await axios.put(`http://try-eat.herokuapp.com/comment/${ids.id}`, {
       ...ids
     })
     return response.data

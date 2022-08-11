@@ -53,7 +53,7 @@ class Signup extends React.Component {
         email: ""
       });
     } else {
-      fetch("http://localhost:3001/users/email", email_info)
+      fetch("http://try-eat.herokuapp.com/users/email", email_info)
         .then(res => res.json())
         .then(json => {
           if (json === true) {
@@ -99,7 +99,7 @@ class Signup extends React.Component {
     if (chkNickname(this.state.nickname) === false) {
       alert("한글, 영문 대소문자 2~15자리만 사용 가능합니다");
     } else {
-      fetch("http://localhost:3001/users/nick", nickname_info)
+      fetch("http://try-eat.herokuapp.com/users/nick", nickname_info)
         .then(res => res.json())
         .then(json => {
           if (json === true) {
@@ -195,7 +195,7 @@ class Signup extends React.Component {
       pw === re_pw &&
       re_pw === pwCheck
     ) {
-      fetch("http://localhost:3001/users", signup_info)
+      fetch("http://try-eat.herokuapp.com/users", signup_info)
         .then(alert("가입이 완료되었습니다."))
         .then(this.props.history.push("/login"));
     } else {

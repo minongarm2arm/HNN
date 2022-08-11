@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getPost = createAsyncThunk("GET_POST", async (id) => {
   try {
-    const response = await axios.get(`http://localhost:3001/posts?id=${id}`)
+    const response = await axios.get(`http://try-eat.herokuapp.com/posts?id=${id}`)
     return response.data
   }catch (err) {
     console.log(err)

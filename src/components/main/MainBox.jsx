@@ -20,13 +20,13 @@ const MainBox = () => {
   const navigate = useNavigate();
 
   const fetchPosts = async () => {
-    const {data} = await axios.get('http://localhost:3001/posts');
+    const {data} = await axios.get('http://try-eat.herokuapp.com/posts');
     setPosts(data);
   };
 
 //   const fetchPosts = useCallback(async () => {
 //     setLoading(true)
-//     await axios.get(`${'http://localhost:3001/posts'}/page=${page}`).then((res) => {
+//     await axios.get(`${'http://try-eat.herokuapp.com/posts'}/page=${page}`).then((res) => {
 //       setPosts(prevState => [...prevState, res])
 //     })
 //     setLoading(false)
@@ -35,7 +35,7 @@ const MainBox = () => {
 
   // const getItems = (async () => {
   //   setLoading(true)
-  //   await axios.get(`${'http://localhost:3001/posts'}/page=${page}`).then((res) => {
+  //   await axios.get(`${'http://try-eat.herokuapp.com/posts'}/page=${page}`).then((res) => {
   //     setItems(prevState => [...prevState, res])
   //   })
   //   setLoading(false)

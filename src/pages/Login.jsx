@@ -29,6 +29,10 @@ const Login = () => {
       localStorage.setItem("token", JSON.stringify(res.data.accessToken))
       navigate("/")
     }).catch((res)=> {
+      if(res.response.data === "Email and password are required") {
+        alert("이메일과 비밀번호를 다시 확인해주세요.")
+        return;
+      }
       if (res.response.data === "Cannot find user") {
         alert("유효하지 않은 이메일입니다.")
         return

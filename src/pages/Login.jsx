@@ -29,18 +29,28 @@ const Login = () => {
       localStorage.setItem("token", JSON.stringify(res.data.accessToken))
       navigate("/")
     }).catch((res)=> {
+      console.log(res)
+
       if(res.response.data === "Email and password are required") {
         alert("이메일과 비밀번호를 다시 확인해주세요.")
         return;
       }
+      
+      if(res.response.data === "Email format is invalid") {
+        alert("유효하지 않은 이메일 형식입니다.")
+        return;
+      }
+
       if (res.response.data === "Cannot find user") {
-        alert("유효하지 않은 이메일입니다.")
+        alert("등록되지 않은 계정입니다.")
         return
       }
+
       if (res.response.data === "Incorrect password") {
         alert("잘못된 비밀번호입니다.")
         return
       }
+
       if (res.response.data === "Password is too short") {
         alert("잘못된 비밀번호입니다.")
         return

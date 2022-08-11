@@ -9,15 +9,15 @@ import { useNavigate } from "react-router-dom";
 
 
 const Main = () => {
-  const navigate = useNavigate();
-  const user = localStorage.getItem("user")
+  // const navigate = useNavigate();
+  // const user = localStorage.getItem("user")
 
-  console.log(user)
+  // console.log(user)
 
-  if (user===null||user===undefined) {
-    navigate('/login')
-    return
-  }
+  // if (user===null||user===undefined) {
+  //   navigate('/login')
+  //   return
+  // }
   
   return (
     <>

@@ -3,7 +3,8 @@ import styled from "styled-components"
 import CommonHeader from "../components/CommonHeader"
 import { IoSearch } from "react-icons/io5"
 import placeholder from "../src_assets/placeholder.png";
-import MainBox from "../components/main/MainBox";
+// import MainBox from "../components/main/MainBox";
+import MyPageBox from "../components/main/MyPageBox";
 import { Virtuoso } from 'react-virtuoso';
 
 
@@ -26,7 +27,7 @@ const Main = () => {
         </select>
       </SearchBar>
 
-      <MainBox />
+      <MyPageBox />
 
       <MainBoxContainer>
         <MainBoxLayout>

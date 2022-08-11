@@ -5,6 +5,7 @@ import CommonHeader from "../components/CommonHeader"
 import { IoSearch } from "react-icons/io5"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import MyPageBox from "../components/main/MyPageBox";
 
 
 
@@ -19,13 +20,13 @@ const MyPage = () => {
       .then((res) => {
         return setNickName(res.data[0].nick)
       })
-  }
-
-  useEffect(() => {
-    getNickName()
-  },[])
-
-  console.log(nickName)
+    }
+    
+    useEffect(() => {
+      getNickName()
+    },[])
+    
+    console.log(nickName)
 
   return (
     <>
@@ -38,7 +39,8 @@ const MyPage = () => {
         <p>을지로 맛집을 조집니다</p>
       </StAboutBox>
       
-
+      <MyPageBox />
+      
       <MainBoxContainer>
         <MainBoxLayout>
           <MainBox />
@@ -53,7 +55,7 @@ const MyPage = () => {
     </>
   )
 }
-export default MyPage
+export default MyPage;
 
 const StTitleText = styled.p`
   font-size: 35px;

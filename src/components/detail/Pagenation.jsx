@@ -5,6 +5,7 @@ import {addCommentList, getCommentList} from "../../redux/modules/comment";
 import {useParams} from "react-router-dom";
 import {nanoid} from "nanoid";
 import {useEffect} from "react";
+import axios from "axios";
 
 const Pagnation = ({commentPerPage, totalComments, paginate}) => {
   const dispatch = useDispatch()
@@ -18,11 +19,23 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
   for (let i = 1; i <= Math.ceil(totalComments / commentPerPage); i++) {
     pageNumber.push(i)
   }
-  console.log(pageNumber)
 
   useEffect(() => {
     dispatch(getCommentList(id))
   }, [])
+  let nickName = ""
+  const user = localStorage.getItem("user").replace(/\"/gi, "")
+
+  const getNickName = () => {
+    axios.get(`http://localhost:3001/users?email=${user}`)
+      .then((res)=> {
+      return nickName = res.data[0].nick
+    })
+  }
+
+  useEffect(()=> {
+    getNickName()
+  })
 
   const onAddList = (e) => {
     e.preventDefault()
@@ -32,11 +45,10 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
     }
     const newCommentList = {
       postId: parseInt(id),
-      name: "닉네임",
+      name: nickName,
       date: new Date().toLocaleString(),
       commentText,
       id: nanoid(),
-      isEdit: false,
     }
     dispatch(addCommentList(newCommentList))
     commentInput.current.value = ""
@@ -116,6 +128,10 @@ const StCommentForm = styled.form`
 
     &:focus ~ button {
       opacity: 1;
+    }
+    
+    & button {
+      border: none;
     }
   }
 `

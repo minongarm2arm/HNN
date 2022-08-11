@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -13,6 +14,7 @@ import useInput from "../../hooks/useInput";
 const PostBox = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [nickName, setNickName] = useState("")
 
 
   // id ~~???
@@ -30,6 +32,19 @@ const PostBox = (props) => {
       alert('저장 완료!');
       navigate('/');
   };
+
+  const user = localStorage.getItem("user").replace(/\"/gi, "")
+
+  const getNickName = () => {
+    axios.get(`http://localhost:3001/users?email=${user}`)
+      .then((res) => {
+        return setNickName(res.data[0].nick)
+      })
+  }
+
+  useEffect(() => {
+    getNickName()
+  },[])
 
 
   // 업로드한 이미지 미리보기 파일
@@ -51,8 +66,6 @@ const PostBox = (props) => {
       };
     });
   };
-
-
   
   return (
     <>
@@ -74,6 +87,7 @@ const PostBox = (props) => {
               const {value} = encodeFileToBase64(e.target.files[0]);
               setPost({
                 ...post,
+                name:nickName,
                 imgFile: value,
               });
             }}
@@ -87,9 +101,10 @@ const PostBox = (props) => {
             type="text"
             onChange={(e) => {
               const {value} = e.target;
-              // console.log(value)
+              console.log(post)
               setPost({
                 ...post,
+                name:nickName,
                 food: value,
               });
             }}
@@ -103,6 +118,7 @@ const PostBox = (props) => {
               // console.log(value)
               setPost({
                 ...post,
+                name:nickName,
                 restaurant: value,
               });
             }}
@@ -116,6 +132,7 @@ const PostBox = (props) => {
               // console.log(value)
               setPost({
                 ...post,
+                name:nickName,
                 location: value,
               });
             }}
@@ -128,6 +145,7 @@ const PostBox = (props) => {
               // console.log(value)
               setPost({
                 ...post,
+                name:nickName,
                 review: value,
               },{});
             }}

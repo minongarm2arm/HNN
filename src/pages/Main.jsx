@@ -4,9 +4,11 @@ import CommonHeader from "../components/CommonHeader"
 import { IoSearch } from "react-icons/io5"
 import placeholder from "../src_assets/placeholder.png";
 import MainBox from "../components/main/MainBox";
+import { Virtuoso } from 'react-virtuoso';
 
 
 const Main = () => {
+
   
   return (
     <>
@@ -97,6 +99,126 @@ const Main = () => {
                 <p>음식명</p>
                 <p>가게명</p>
                 <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
               </div>
             </StPostHover>
           </StMainBox>

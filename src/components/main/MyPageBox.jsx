@@ -14,7 +14,7 @@ const MyPageBox = () => {
   const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
-    axios.get(`http://localhost:3001/users?email=${user}`)
+    axios.get(`https://try-eat.herokuapp.com/users?email=${user}`)
       .then((res) => {
         return setNickName(res.data[0].nick)
       })
@@ -25,7 +25,7 @@ const MyPageBox = () => {
     },[])
 
   const fetchPosts = async () => {
-    const {data} = await axios.get('http://localhost:3001/posts');
+    const {data} = await axios.get('https://try-eat.herokuapp.com/posts');
     setPosts(data);
   };
 

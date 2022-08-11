@@ -38,7 +38,7 @@ const SignUp = () => {
 
     if (inputs.email && inputs.password && inputs.nick && password2) {
       await axios
-        .post("http://localhost:3001/register", {
+        .post("http://try-eat.herokuapp.com/register", {
           ...inputs,
         })
         .then((res, rej) => {

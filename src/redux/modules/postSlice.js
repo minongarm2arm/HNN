@@ -13,7 +13,7 @@ export const getPosts = createAsyncThunk(
   "getPosts",
   async (id) => {
     try {
-      const data = await axios.get(`http://localhost:3001/posts?id=${id}`);
+      const data = await axios.get(`http://try-eat.herokuapp.com/posts?id=${id}`);
       // console.log(data.data[0]);
       return data.data[0]
     } catch (error) {
@@ -26,7 +26,7 @@ export const patchPosts = createAsyncThunk(
   "patchPosts",
   async (id) => {
     try {
-      const data = await axios.patch(`http://localhost:3001/posts?id=${id}`);
+      const data = await axios.patch(`http://try-eat.herokuapp.com/posts?id=${id}`);
       console.log(data.data[0]);
       return data.data[0]
     } catch (error) {

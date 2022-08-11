@@ -28,7 +28,7 @@ const PostBox = (props) => {
   const [post, setPost] = useState()
 
   const onSubmitHandler = (post) => {
-      axios.post("http://localhost:3001/posts", post);
+      axios.post("http://try-eat.herokuapp.com/posts", post);
       alert('저장 완료!');
       navigate('/');
   };
@@ -36,7 +36,7 @@ const PostBox = (props) => {
   const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
-    axios.get(`http://localhost:3001/users?email=${user}`)
+    axios.get(`http://try-eat.herokuapp.com/users?email=${user}`)
       .then((res) => {
         return setNickName(res.data[0].nick)
       })

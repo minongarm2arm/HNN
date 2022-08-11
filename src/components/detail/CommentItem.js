@@ -45,7 +45,7 @@ const CommentItem = ({postId, id, name, date, commentText}) => {
   const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
-    axios.get(`http://localhost:3001/users?email=${user}`)
+    axios.get(`http://try-eat.herokuapp.com/users?email=${user}`)
       .then((res) => {
         return setNickName(res.data[0].nick)
       })

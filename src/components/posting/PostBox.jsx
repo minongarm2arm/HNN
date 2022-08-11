@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -65,8 +66,6 @@ const PostBox = (props) => {
       };
     });
   };
-
-
   
   return (
     <>

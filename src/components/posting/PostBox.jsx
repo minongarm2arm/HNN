@@ -33,11 +33,18 @@ const PostBox = (props) => {
       navigate('/');
   };
 
-  const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
-    axios.get(`http://try-eat.herokuapp.com/users?email=${user}`)
-      .then((res) => {
+
+    let user = localStorage.getItem("user")
+    if(user===undefined || user===null) {
+      alert("로그인이 필요합니다")
+      navigate("/login")
+    }else {
+      user = user.replace(/\"/gi, "")
+    }
+    axios.get(`http://localhost:3001/users?email=${user}`)
+      .then((res)=> {
         return setNickName(res.data[0].nick)
       })
   }

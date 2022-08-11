@@ -6,16 +6,24 @@ import { IoSearch } from "react-icons/io5"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MyPageBox from "../components/main/MyPageBox";
+import {useNavigate} from "react-router-dom";
 
 
 
 const MyPage = () => {
+  const navigate = useNavigate()
 
   const [nickName, setNickName] = useState("")
 
-  const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
+    let user = localStorage.getItem("user").replace(/\"/gi, "")
+    if(user===undefined || user===null) {
+      alert("로그인이 필요합니다")
+      navigate("/login")
+    }else {
+      user = user.replace(/\"/gi, "")
+    }
     axios.get(`http://try-eat.herokuapp.com/users?email=${user}`)
       .then((res) => {
         return setNickName(res.data[0].nick)
@@ -25,8 +33,6 @@ const MyPage = () => {
     useEffect(() => {
       getNickName()
     },[])
-    
-    console.log(nickName)
 
   return (
     <>

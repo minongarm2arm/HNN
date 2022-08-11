@@ -19,6 +19,8 @@ const MainBox = () => {
   const navigate = useNavigate();
   const [nickName, setNickName] = useState("")
 
+
+
   const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {

@@ -6,8 +6,10 @@ import {useParams} from "react-router-dom";
 import {nanoid} from "nanoid";
 import {useEffect} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Pagnation = ({commentPerPage, totalComments, paginate}) => {
+  const navigate=useNavigate()
   const dispatch = useDispatch()
   const {id} = useParams()
   const commentInput = useRef()
@@ -24,13 +26,19 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
     dispatch(getCommentList(id))
   }, [])
   let nickName = ""
-  const user = localStorage.getItem("user").replace(/\"/gi, "")
 
   const getNickName = () => {
-    axios.get(`http://try-eat.herokuapp.com/users?email=${user}`)
+
+    let user = localStorage.getItem("user")
+    if(user===undefined || user===null) {
+      navigate("/login")
+    }else {
+      user = user.replace(/\"/gi, "")
+    }
+    axios.get(`http://localhost:3001/users?email=${user}`)
       .then((res)=> {
-      return nickName = res.data[0].nick
-    })
+        return nickName = res.data[0].nick
+      })
   }
 
   useEffect(()=> {

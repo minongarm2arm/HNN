@@ -56,9 +56,6 @@ const MainBox = () => {
     fetchPosts()
   }, []);
 
-  // useEffect(() => {
-  //   fetchPosts()
-  // }, [fetchPosts]);
 
 //   <Virtuoso
 //   style={{ height: '400px' }}

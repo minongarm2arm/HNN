@@ -12,7 +12,9 @@ const Main = () => {
   const navigate = useNavigate();
   const user = localStorage.getItem("user")
 
-  if (user===null) {
+  console.log(user)
+
+  if (user===null||user===undefined) {
     navigate('/login')
     return
   }

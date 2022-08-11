@@ -4,8 +4,10 @@ import {useDispatch} from "react-redux";
 import {useRef, useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const CommentItem = ({postId, id, name, date, commentText}) => {
+  const navigate=useNavigate()
   const dispatch = useDispatch()
   const toggleIsEdit = () => setIsEdit(!isEdit)
   const [isEdit, setIsEdit] = useState(false)
@@ -42,11 +44,17 @@ const CommentItem = ({postId, id, name, date, commentText}) => {
     commentTextInput.current.value = ""
   }
 
-  const user = localStorage.getItem("user").replace(/\"/gi, "")
-
   const getNickName = () => {
+
+    let user = localStorage.getItem("user")
+    if(user===undefined || user===null) {
+      alert("로그인이 필요합니다")
+      navigate("/login")
+    }else {
+      user = user.replace(/\"/gi, "")
+    }
     axios.get(`https://try-eat.herokuapp.com/users?email=${user}`)
-      .then((res) => {
+      .then((res)=> {
         return setNickName(res.data[0].nick)
       })
   }

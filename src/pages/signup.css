@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Fira+Sans&display=swap");
+
+h1, h2, h3, h4, h5, h6,
+label, button, input,
+span {
+    font-weight: 500;
+}
+
+.auth-wrapper {
+    width: 100%;
+    height: 100vh;
+    text-align: left;
+
+    margin: 10px;
+    padding: 10px;
+    font-weight: 400;
+}
+
+.auth-inner {
+    width: auto;
+    margin: 20px;
+    background: #ffffff;
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+.auth-inner input {
+    margin: 10px 0;
+    padding: 10px;
+
+    width: 100%;
+    font-size: 20px;
+}
+
+.auth-inner h1 {
+    margin: 8px 0;
+    text-align: center;
+}
+
+.auth-wrapper .form-control:focus {
+    border-color: palevioletred;
+    box-shadow: none;
+}
+
+.btn {
+    background-color: crimson;
+    margin: 10px 0;
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    color: white;
+
+    border-radius: 10px;
+    border-color: crimson;
+}
+
+.btn2 {
+    background-color: crimson;
+    margin: 10px 0;
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    color: white;
+
+    border-radius: 10px;
+    border-color: crimson;
+}

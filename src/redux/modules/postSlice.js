@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
@@ -41,8 +42,6 @@ export const postsSlice = createSlice({
   extraReducers: {
     [getPosts.fulfilled]: (state, {payload}) => payload,
     [patchPosts.fulfilled]: (state, {payload}) => payload,
-    
-
   }
 });
 

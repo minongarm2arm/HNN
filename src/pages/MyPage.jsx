@@ -1,95 +1,88 @@
+/* eslint-disable */
 import React from "react";
 import styled from "styled-components"
 import CommonHeader from "../components/CommonHeader"
-import Layout from "../components/Layout"
 import { IoSearch } from "react-icons/io5"
-import { HiOutlineUserCircle } from "react-icons/hi"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 
 const MyPage = () => {
-  return (
-        <>
-        <CommonHeader />
-        <h2>마이페이지</h2>
-        <ProfileContainer>
-          <HiOutlineUserCircle size="150" color="gray"/>
-          <div>
-          <input type="text" placeholder="User ID" />
-          <input type="text" placeholder="My Comment" />
-          <button>프로필 수정</button>
-          </div>
-        </ProfileContainer>
 
-        <SearchBar>
-          <div>
-          <input type="text" />
-          <IoSearch />
-          </div>
-          <select>
-            <option>최신순</option>
-            <option>댓글순</option>
-            <option>좋아요순</option>
-          </select>
-        </SearchBar>
-  
-        <MainBoxContainer>
-          <MainBoxLayout>
-            <MainBox />
-            <p>@ UserName</p>
-          </MainBoxLayout>
-          <MainBoxLayout>
-            <MainBox />
-            <p>@ UserName</p>
-          </MainBoxLayout>
-          <MainBoxLayout>
-            <MainBox />
-            <p>@ UserName</p>
-          </MainBoxLayout>
-        </MainBoxContainer>
-      </>
+  const [nickName, setNickName] = useState("")
+
+  const user = localStorage.getItem("user").replace(/\"/gi, "")
+
+  const getNickName = () => {
+    axios.get(`http://localhost:3001/users?email=${user}`)
+      .then((res) => {
+        return setNickName(res.data[0].nick)
+      })
+  }
+
+  useEffect(() => {
+    getNickName()
+  },[])
+
+  console.log(nickName)
+
+  return (
+    <>
+      <CommonHeader />
+      <StTitleText>
+      <span>{nickName}</span> 님의 글 목록
+      </StTitleText>
+
+      <StAboutBox>
+        <p>을지로 맛집을 조집니다</p>
+      </StAboutBox>
+      
+
+      <MainBoxContainer>
+        <MainBoxLayout>
+          <MainBox />
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <MainBox />
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <MainBox />
+        </MainBoxLayout>
+      </MainBoxContainer>
+    </>
   )
 }
+export default MyPage
 
-const ProfileContainer = styled.div`
-  display: flex;
-  margin: 10px;
-  margin-top: 20px;
-  gap: 10px;
-
-  & > div {
-    display: flex;
-    flex-flow: column;
-    margin: 10px;
-    margin-top: 30px;
-    margin-bottom: 100px;
-    gap: 10px;
+const StTitleText = styled.p`
+  font-size: 35px;
+  font-weight: 300;
+  text-align: center;
+  color: #696969;
+  & span {
+    color: #fcafbd
   }
-`;
+`
 
-const SearchBar = styled.div`
+const StAboutBox = styled.div`
+  width: 90%;
+  height: 100px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-`;
+  align-items: center;
+  & p {
+    margin: auto;
+  }
+`
 
 const MainBoxContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 `;
-
-// const MainBoxLayout = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   margin-top: 50px;
-
-//   & > p {
-//     flex: 1 1 100%;
-//     margin-top: 7px;
-//   }
-// `;
 
 const MainBoxLayout = styled.div`
   display: flex;
@@ -98,7 +91,6 @@ const MainBoxLayout = styled.div`
   flex-direction: column;
   margin-top: 50px;
   width: 33%;
-
   & > p {
     /* flex: 1 1 100%; */
     margin-top: 7px;
@@ -113,4 +105,3 @@ const MainBox = styled.div`
   border-radius: 30px;
 `;
 
-export default MyPage

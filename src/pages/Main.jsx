@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components"
 import CommonHeader from "../components/CommonHeader"
-import Layout from "../components/Layout"
 import { IoSearch } from "react-icons/io5"
 import placeholder from "../src_assets/placeholder.png";
+import MainBox from "../components/main/MainBox";
+import { Virtuoso } from 'react-virtuoso';
 
 
 const Main = () => {
+
   
   return (
     <>
       <CommonHeader />
-      <h2>메인</h2>
+      <h2>Main</h2>
       <SearchBar>
         <div>
         <input type="text" />
@@ -24,9 +26,11 @@ const Main = () => {
         </select>
       </SearchBar>
 
+      <MainBox />
+
       <MainBoxContainer>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -37,11 +41,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -52,11 +56,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -67,11 +71,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -82,11 +86,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -97,11 +101,11 @@ const Main = () => {
                 <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
         <MainBoxLayout>
-          <MainBox>
+          <StMainBox>
             <StPostImg>
 
             </StPostImg>
@@ -112,7 +116,127 @@ const Main = () => {
               <p>가게 위치</p>
               </div>
             </StPostHover>
-          </MainBox>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
+          <p>@ UserName</p>
+        </MainBoxLayout>
+        <MainBoxLayout>
+          <StMainBox>
+            <StPostImg>
+
+            </StPostImg>
+            <StPostHover>
+              <div className="hoverText">
+              <p>음식명</p>
+              <p>가게명</p>
+              <p>가게 위치</p>
+              </div>
+            </StPostHover>
+          </StMainBox>
           <p>@ UserName</p>
         </MainBoxLayout>
       </MainBoxContainer>
@@ -147,7 +271,7 @@ const MainBoxLayout = styled.div`
   }
 `;
 
-const MainBox = styled.div`
+const StMainBox = styled.div`
   width: 220px;
   height: 200px;
   border-radius: 30px;

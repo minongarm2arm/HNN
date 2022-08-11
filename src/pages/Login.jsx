@@ -21,7 +21,7 @@ const Login = () => {
   }
 
   const onLoginHandler = async () => {
-    await axios.post("http://try-eat.herokuapp.com/login", {
+    await axios.post("https://try-eat.herokuapp.com/login", {
       ...inputs
     }).then((res)=> {
       console.log(res.data)

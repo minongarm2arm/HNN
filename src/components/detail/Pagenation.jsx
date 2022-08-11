@@ -35,7 +35,7 @@ const Pagnation = ({commentPerPage, totalComments, paginate}) => {
     }else {
       user = user.replace(/\"/gi, "")
     }
-    axios.get(`http://localhost:3001/users?email=${user}`)
+    axios.get(`https://try-eat.herokuapp.com/users?email=${user}`)
       .then((res)=> {
         return nickName = res.data[0].nick
       })

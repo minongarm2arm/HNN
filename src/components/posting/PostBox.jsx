@@ -28,7 +28,7 @@ const PostBox = (props) => {
   const [post, setPost] = useState()
 
   const onSubmitHandler = (post) => {
-      axios.post("http://try-eat.herokuapp.com/posts", post);
+      axios.post("https://try-eat.herokuapp.com/posts", post);
       alert('저장 완료!');
       navigate('/');
   };
@@ -43,7 +43,7 @@ const PostBox = (props) => {
     }else {
       user = user.replace(/\"/gi, "")
     }
-    axios.get(`http://localhost:3001/users?email=${user}`)
+    axios.get(`https://try-eat.herokuapp.com/users?email=${user}`)
       .then((res)=> {
         return setNickName(res.data[0].nick)
       })

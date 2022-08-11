@@ -24,7 +24,7 @@ const MyPage = () => {
     }else {
       user = user.replace(/\"/gi, "")
     }
-    axios.get(`http://try-eat.herokuapp.com/users?email=${user}`)
+    axios.get(`https://try-eat.herokuapp.com/users?email=${user}`)
       .then((res) => {
         return setNickName(res.data[0].nick)
       })

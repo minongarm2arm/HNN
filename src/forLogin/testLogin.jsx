@@ -39,7 +39,7 @@ class Login extends React.Component {
         "Content-Type": "application/json"
       }
     };
-    fetch("http://try-eat.herokuapp.com/login", login_info)
+    fetch("https://try-eat.herokuapp.com/login", login_info)
       .then(res => {
         return res.json();
       })

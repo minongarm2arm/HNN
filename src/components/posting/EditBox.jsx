@@ -24,7 +24,7 @@ const EditBox = (props) => {
   const [posts, setPosts] = useState(null);
 
   const fetchPosts = async () => {
-    const { data } = await axios.get('http://try-eat.herokuapp.com/posts?id={id}');
+    const { data } = await axios.get('https://try-eat.herokuapp.com/posts?id={id}');
     setPosts(data);
   };
   
@@ -80,7 +80,7 @@ const EditBox = (props) => {
   const onEditHandler = (id, edit) => {
     if (window.confirm('🐷: 포스팅을 수정할까요?')) {
       alert('수정 완료!')
-      axios.patch(`http://try-eat.herokuapp.com/posts/${id}`, edit);
+      axios.patch(`https://try-eat.herokuapp.com/posts/${id}`, edit);
       navigate(`/detail/${id}`)
     }
   };
@@ -89,7 +89,7 @@ const EditBox = (props) => {
   const onDeleteHandler = (id) => {
     if (window.confirm('🐷: 포스팅을 삭제할까요?')) {
       alert('삭제 완료!')
-      axios.delete(`http://try-eat.herokuapp.com/posts/${id}`)
+      axios.delete(`https://try-eat.herokuapp.com/posts/${id}`)
       navigate('/')
     }
     

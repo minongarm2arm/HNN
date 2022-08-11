@@ -6,7 +6,6 @@ import placeholder from "../../src_assets/placeholder.png";
 import { useNavigate } from "react-router-dom";
 // import ReactDOM from 'react-dom/client';
 // import createRoot from 'react-dom/client';
-// import { Virtuoso } from 'react-virtuoso';
 // import { useInView } from "react-intersection-observer";
 
 const MainBox = () => {
